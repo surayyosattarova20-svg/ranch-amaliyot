@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amaliy Mashg‘ulotlar Portali</title>
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #0ea5e9;
+      --purple: #6d28d9;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --danger: #b91c1c;
+      --danger-bg: #fee2e2;
+      --warn-bg: #fef9c3;
+      --warn-text: #854d0e;
+      --bg-base: #f0f9ff;
+      --bg-grad-1: rgba(14, 165, 233, 0.09);
+      --bg-grad-2: rgba(56, 189, 248, 0.07);
+      --hero-grad: linear-gradient(135deg, #0c4a6e 0%, #0284c7 58%, #38bdf8 100%);
+      --card: rgba(255, 255, 255, 0.96);
+      --text: #0f172a;
+      --muted: #475569;
+      --border: #cbd5e1;
+      --radius: 14px;
+      --pattern-svg: url("data:image/svg+xml,%3Csvg width='120' height='120' viewBox='0 0 120 120' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230284c7' stroke-opacity='0.06' stroke-width='1.2'%3E%3Cpath d='M15 95 L42 68 L66 78 L102 32'/%3E%3Ccircle cx='15' cy='95' r='3'/%3E%3Ccircle cx='42' cy='68' r='3'/%3E%3Ccircle cx='66' cy='78' r='3'/%3E%3Ccircle cx='102' cy='32' r='3'/%3E%3Crect x='20' y='20' width='22' height='14' rx='3'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    body.theme-im {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --accent: #0ea5e9;
+      --bg-base: #f2f9ff;
+      --bg-grad-1: rgba(14, 165, 233, 0.10);
+      --bg-grad-2: rgba(125, 211, 252, 0.10);
+      --hero-grad: linear-gradient(135deg, #0c4a6e 0%, #0369a1 55%, #0284c7 100%);
+      --pattern-svg: url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230284c7' stroke-opacity='0.055' stroke-width='1.3'%3E%3Cpath d='M18 110 L48 80 L76 92 L118 42'/%3E%3Ccircle cx='18' cy='110' r='3.5'/%3E%3Ccircle cx='48' cy='80' r='3.5'/%3E%3Ccircle cx='76' cy='92' r='3.5'/%3E%3Ccircle cx='118' cy='42' r='3.5'/%3E%3Ccircle cx='35' cy='35' r='10'/%3E%3Cpath d='M95 105 h22 v16 h-22 z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    body.theme-win {
+      --primary: #4338ca;
+      --primary-dark: #312e81;
+      --accent: #4f46e5;
+      --bg-base: #f3f5fb;
+      --bg-grad-1: rgba(79, 70, 229, 0.08);
+      --bg-grad-2: rgba(148, 163, 184, 0.10);
+      --hero-grad: linear-gradient(135deg, #1e1b4b 0%, #312e81 55%, #4338ca 100%);
+      --pattern-svg: url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%234338ca' stroke-opacity='0.05' stroke-width='1.2'%3E%3Crect x='20' y='20' width='20' height='20' rx='2'/%3E%3Crect x='44' y='20' width='20' height='20' rx='2'/%3E%3Crect x='20' y='44' width='20' height='20' rx='2'/%3E%3Crect x='44' y='44' width='20' height='20' rx='2'/%3E%3Cpath d='M85 95 l10 8 l-10 8 M102 111 h14'/%3E%3Ccircle cx='105' cy='38' r='12'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    body.theme-egov {
+      --primary: #0f766e;
+      --primary-dark: #115e59;
+      --accent: #0d9488;
+      --bg-base: #f1faf7;
+      --bg-grad-1: rgba(13, 148, 136, 0.09);
+      --bg-grad-2: rgba(16, 185, 129, 0.07);
+      --hero-grad: linear-gradient(135deg, #042f2e 0%, #115e59 55%, #0f766e 100%);
+      --pattern-svg: url("data:image/svg+xml,%3Csvg width='140' height='140' viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' stroke='%230f766e' stroke-opacity='0.055' stroke-width='1.2'%3E%3Ccircle cx='70' cy='34' r='8'/%3E%3Ccircle cx='34' cy='96' r='8'/%3E%3Ccircle cx='106' cy='96' r='8'/%3E%3Cpath d='M70 42 L38 89 M70 42 L102 89 M42 96 L98 96'/%3E%3Crect x='24' y='24' width='18' height='22' rx='2'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Arial, sans-serif; }
+
+    body {
+      background-color: var(--bg-base);
+      background-image:
+        radial-gradient(circle at 12% 18%, var(--bg-grad-1) 0%, transparent 42%),
+        radial-gradient(circle at 88% 72%, var(--bg-grad-2) 0%, transparent 46%),
+        var(--pattern-svg);
+      background-attachment: fixed;
+      color: var(--text);
+      line-height: 1.65;
+      transition: background-color 0.4s ease;
+    }
+
+    #jsErrorBanner {
+      display: none;
+      background: #fee2e2;
+      color: #991b1b;
+      border-bottom: 2px solid #dc2626;
+      padding: 12px 20px;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      box-shadow: 0 2px 12px rgba(15, 23, 42, 0.05);
+    }
+
+    .nav-wrap {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .brand-block { display: flex; flex-direction: column; gap: 3px; }
+    .brand-title { font-size: 1.18rem; font-weight: 700; color: var(--primary); display: block; transition: color 0.3s; }
+    .brand-sub { font-size: 0.8rem; color: var(--muted); display: block; }
+
+    .header-admin-badge {
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--primary-dark);
+      border: 1px solid var(--border);
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      box-shadow: 0 1px 4px rgba(15, 23, 42, 0.04);
+    }
+
+    .header-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .progress-wrap { min-width: 185px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 0.84rem; margin-bottom: 4px; color: var(--muted); }
+    .progress-bar { height: 9px; background: #e2e8f0; border-radius: 999px; overflow: hidden; }
+    .progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--primary), var(--success)); transition: width 0.3s ease; }
+
+    .btn {
+      border: none;
+      border-radius: 9px;
+      padding: 9px 14px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .btn-sm { padding: 5px 10px; font-size: 0.8rem; border-radius: 7px; }
+    .btn-primary { background: var(--primary); color: #fff; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline { background: #fff; color: var(--text); border: 1px solid var(--border); }
+    .btn-outline:hover { background: #f8fafc; }
+    .btn-success { background: var(--success); color: #fff; }
+    .btn-accent { background: var(--accent); color: #fff; }
+    .btn-purple { background: var(--purple); color: #fff; }
+    .btn-dark { background: #0f172a; color: #fff; }
+
+    .subject-bar {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--border);
+    }
+    .subject-bar-inner { max-width: 1260px; margin: 0 auto; padding: 10px 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .subject-tab {
+      padding: 10px 16px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: var(--text);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: 0.25s;
+    }
+    .subject-tab:hover { border-color: var(--primary); }
+    .subject-tab.active { background: var(--primary-dark); color: #fff; border-color: var(--primary-dark); box-shadow: 0 3px 10px rgba(15, 23, 42, 0.12); }
+
+    .hero {
+      background: var(--hero-grad);
+      color: #fff;
+      padding: 30px 20px;
+      transition: background 0.4s ease;
+    }
+    .hero-inner { max-width: 1260px; margin: 0 auto; }
+    .hero-top { margin-bottom: 20px; }
+    .hero h1 { font-size: 1.65rem; margin-bottom: 8px; }
+    .hero p { color: rgba(255, 255, 255, 0.94); font-size: 0.95rem; margin-bottom: 12px; }
+    .meta-pills { display: flex; gap: 8px; flex-wrap: wrap; font-size: 0.82rem; }
+    .pill { background: rgba(255, 255, 255, 0.16); padding: 5px 11px; border-radius: 999px; }
+
+    .auth-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 900px) { .auth-panels { grid-template-columns: 1fr; } }
+
+    .auth-card {
+      background: rgba(255, 255, 255, 0.97);
+      color: var(--text);
+      padding: 18px;
+      border-radius: var(--radius);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.18);
+    }
+    .auth-card h3 { font-size: 1rem; margin-bottom: 10px; color: var(--primary-dark); }
+    .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
+    @media (max-width: 520px) { .auth-grid { grid-template-columns: 1fr; } }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      background: #fff;
+      color: var(--text);
+    }
+    textarea { resize: vertical; min-height: 70px; }
+
+    .auth-status-bar {
+      margin-top: 14px;
+      background: rgba(255, 255, 255, 0.16);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      padding: 10px 14px;
+      border-radius: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: #fff;
+    }
+
+    .controls {
+      max-width: 1260px;
+      margin: 22px auto 14px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .controls-left { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+    .group-filter-box { min-width: 255px; }
+    .filter-tabs { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tab-btn { padding: 8px 14px; border-radius: 8px; border: 1px solid var(--border); background: rgba(255, 255, 255, 0.95); color: var(--text); font-size: 0.88rem; font-weight: 600; cursor: pointer; }
+    .tab-btn.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .search-box { max-width: 300px; width: 100%; }
+
+    .container { max-width: 1260px; margin: 0 auto 48px; padding: 0 20px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(345px, 1fr)); gap: 18px; }
+
+    .topic-card {
+      background: var(--card);
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.04);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .topic-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.07);
+    }
+
+    .card-top { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 10px; }
+    .num-badge { font-size: 0.8rem; font-weight: 700; color: var(--primary-dark); background: rgba(255, 255, 255, 0.9); border: 1px solid var(--border); padding: 4px 10px; border-radius: 999px; }
+    .status-badge { font-size: 0.78rem; font-weight: 700; padding: 4px 10px; border-radius: 999px; }
+    .status-pending { background: #f1f5f9; color: var(--muted); }
+    .status-done { background: var(--success-bg); color: var(--success); }
+
+    .topic-card h3 { font-size: 1.05rem; margin-bottom: 8px; color: var(--text); }
+    .topic-card p { font-size: 0.9rem; color: var(--muted); margin-bottom: 14px; }
+    .card-footer { display: flex; justify-content: space-between; align-items: center; gap: 10px; border-top: 1px solid #e2e8f0; padding-top: 12px; }
+    .score-tag { font-size: 0.82rem; font-weight: 600; color: var(--muted); }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.62);
+      backdrop-filter: blur(3px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      z-index: 60;
+    }
+    .modal-bg.open { display: flex; }
+
+    .modal {
+      background: #fff;
+      width: 100%;
+      max-width: 1120px;
+      max-height: 92vh;
+      overflow-y: auto;
+      border-radius: 16px;
+      padding: 26px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+    }
+
+    .modal-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .modal-head h2 { font-size: 1.22rem; color: var(--primary-dark); }
+    .close-x { background: #f1f5f9; border: none; width: 34px; height: 34px; border-radius: 8px; font-size: 1.25rem; cursor: pointer; flex-shrink: 0; color: var(--text); }
+
+    .section-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid var(--primary);
+      border-radius: 10px;
+      padding: 18px;
+      margin-bottom: 18px;
+    }
+    .section-box.practice { border-left-color: var(--accent); background: #f0f9ff; }
+    .section-box.interactive { border-left-color: var(--purple); background: #faf5ff; }
+    .section-box h4 { font-size: 1.02rem; margin-bottom: 10px; color: var(--primary-dark); }
+    .section-box.interactive h4 { color: #5b21b6; }
+
+    .theory-content p { margin-bottom: 10px; font-size: 0.94rem; color: var(--text); }
+    .theory-bullets { padding-left: 20px; margin-bottom: 10px; font-size: 0.92rem; }
+    .theory-bullets li { margin-bottom: 6px; }
+    .theory-terms { background: #fff; border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px 14px; font-size: 0.88rem; color: var(--muted); }
+
+    .lab-meta-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-bottom: 12px; font-size: 0.88rem; }
+    .lab-meta-item { background: #fff; border: 1px solid #bae6fd; border-radius: 8px; padding: 10px 12px; }
+    .section-box ul, .section-box ol { padding-left: 20px; font-size: 0.92rem; }
+    .section-box li { margin-bottom: 6px; }
+    code { background: #e2e8f0; color: var(--text); padding: 2px 6px; border-radius: 5px; font-family: Consolas, monospace; font-size: 0.88em; }
+
+    .match-row {
+      display: grid;
+      grid-template-columns: 1fr 1.25fr;
+      gap: 10px;
+      align-items: center;
+      background: #fff;
+      border: 1px solid #e9d5ff;
+      padding: 9px 12px;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 680px) { .match-row { grid-template-columns: 1fr; } }
+    .match-row.ok { border-color: var(--success); background: var(--success-bg); }
+    .match-row.bad { border-color: var(--danger); background: var(--danger-bg); }
+
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      background: #fff;
+      border: 1px solid #e9d5ff;
+      padding: 9px 12px;
+      border-radius: 8px;
+      margin-bottom: 7px;
+      font-size: 0.9rem;
+    }
+    .order-item.ok { border-color: var(--success); background: var(--success-bg); }
+    .order-item.bad { border-color: var(--danger); background: var(--danger-bg); }
+    .order-btns { display: flex; gap: 4px; flex-shrink: 0; }
+
+    .mini-feedback { font-size: 0.88rem; font-weight: 700; margin-top: 8px; }
+
+    .quiz-toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: 10px;
+      margin-bottom: 12px;
+      font-size: 0.88rem;
+    }
+    .q-jump-list { display: flex; gap: 6px; flex-wrap: wrap; }
+    .q-jump-btn { width: 28px; height: 28px; border-radius: 6px; border: 1px solid var(--border); background: #fff; color: var(--text); font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+    .q-jump-btn.answered { background: #dbeafe; border-color: var(--primary); color: var(--primary-dark); }
+
+    .question-block { background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 15px; margin-bottom: 12px; }
+    .question-title { font-weight: 700; font-size: 0.94rem; margin-bottom: 10px; color: var(--text); }
+
+    .opt {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      padding: 8px 12px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 7px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      color: var(--text);
+    }
+    .opt input { width: auto; margin-top: 3px; }
+    .opt.correct-opt { background: var(--success-bg); border-color: var(--success); color: var(--success); font-weight: 600; }
+    .opt.wrong-opt { background: var(--danger-bg); border-color: var(--danger); color: var(--danger); }
+
+    .explanation { margin-top: 8px; font-size: 0.85rem; color: var(--muted); background: #f8fafc; padding: 8px 12px; border-radius: 8px; display: none; }
+    .explanation.show { display: block; }
+
+    .result-banner { padding: 15px; border-radius: 12px; margin-top: 12px; font-weight: 600; font-size: 0.92rem; display: none; }
+    .result-banner.show { display: block; }
+    .result-pass { background: var(--success-bg); color: var(--success); border: 1px solid #86efac; }
+    .result-warn { background: var(--warn-bg); color: var(--warn-text); border: 1px solid #fde047; }
+    .result-fail { background: var(--danger-bg); color: var(--danger); border: 1px solid #fca5a5; }
+
+    .admin-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .stat-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
+    .stat-box strong { display: block; font-size: 1.2rem; color: var(--primary-dark); }
+    .stat-box span { font-size: 0.82rem; color: var(--muted); }
+
+    .sheet-box { background: #f8fafc; border: 1px solid var(--border); border-radius: 12px; padding: 14px; margin-bottom: 16px; }
+    h3.report-sub-title { margin-top: 20px; margin-bottom: 6px; font-size: 1rem; color: var(--primary-dark); }
+    table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 0.84rem; }
+    th, td { border: 1px solid var(--border); padding: 7px 9px; text-align: left; color: var(--text); }
+    th { background: #f1f5f9; font-weight: 700; }
+    footer { background: rgba(255, 255, 255, 0.92); border-top: 1px solid var(--border); padding: 20px; text-align: center; font-size: 0.86rem; color: var(--muted); }
+
+    @media print {
+      header, .subject-bar, .controls, .card-footer, .close-x, .no-print { display: none !important; }
+      body { background: #fff !important; }
+    }
+  </style>
+</head>
+<body class="theme-im">
+
+  <div id="jsErrorBanner"></div>
+
+  <header>
+    <div class="nav-wrap">
+      <div class="brand-block">
+        <span class="brand-title">Amaliy Mashg‘ulotlar Portali</span>
+        <span class="brand-sub">Urganch Ranch Texnologiya Universiteti • Raqamli texnologiyalar kafedrasi</span>
+      </div>
+      <div class="header-admin-badge">Admin: Sattarova Surayyo Beknazarovna</div>
+      <div class="header-right">
+        <div class="progress-wrap">
+          <div class="progress-label">
+            <span id="progressScopeLabel">O‘zlashtirish</span>
+            <strong id="progressText">0 / 30 (0%)</strong>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+        <button type="button" class="btn btn-dark" id="openAdminPanelBtn">Admin statistika</button>
+        <button type="button" class="btn btn-outline" id="openSheetConfigBtn">Google Sheets</button>
+        <button type="button" class="btn btn-primary" id="openReportBtn">Hisobotim</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="subject-bar" aria-label="Fan bo‘limlari">
+    <div class="subject-bar-inner" id="subjectTabsBar">
+      <button type="button" class="subject-tab active" data-subject="im" id="tabSubjectIm">
+        1-bo‘lim: Internet marketing (KI-2301, KI-2302 • 15 amaliyot)
+      </button>
+      <button type="button" class="subject-tab" data-subject="win" id="tabSubjectWin">
+        2-bo‘lim: Windows operatsion tizimida administrlash (KI-2301, KI-2302 • 15 amaliyot)
+      </button>
+      <button type="button" class="subject-tab" data-subject="egov" id="tabSubjectEgov">
+        3-bo‘lim: Elektron hukumat (KI-2401, KI(ax)-2401 • 15 amaliyot)
+      </button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <h1 id="heroTitle">Internet marketing — Amaliy mashg‘ulotlar</h1>
+        <p id="heroDesc">Har bir mavzu bo‘yicha nazariy asoslar, amaliy vazifalar, interaktiv moslashtirish va ketma-ketlikni tartiblash mashqlari hamda 10 tadan nazorat testi.</p>
+        <div class="meta-pills">
+          <span class="pill">7-semestr (KI-2301, KI-2302): Internet marketing & Windows administrlash</span>
+          <span class="pill">5-semestr (KI-2401, KI(ax)-2401): Elektron hukumat</span>
+          <span class="pill">Google Sheets sinxronizatsiyasi faol</span>
+        </div>
+      </div>
+
+      <div class="auth-panels">
+        <div class="auth-card">
+          <h3>Tizimga kirish (Talaba / Mehmon / Admin)</h3>
+          <div class="auth-grid">
+            <input type="text" id="loginInput" placeholder="Login kiriting" autocomplete="off" />
+            <input type="password" id="passwordInput" placeholder="Parolni kiriting" autocomplete="off" />
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" id="loginBtn">Kirish</button>
+            <button type="button" class="btn btn-outline" id="logoutBtn">Chiqish</button>
+          </div>
+          <div style="margin-top:8px; font-size:0.8rem; color:var(--muted);">
+            Shaxsiy login va parolingizni kiriting.
+          </div>
+        </div>
+
+        <div class="auth-card">
+          <h3>Mehmon sifatida ro‘yxatdan o‘tish</h3>
+          <div class="auth-grid">
+            <input type="text" id="guestNameInput" placeholder="Mehmon Ism-sharifi (F.I.Sh)" />
+            <input type="text" id="guestOrgInput" placeholder="OTM / Tashkilot / Lavozim" />
+          </div>
+          <div class="auth-grid">
+            <input type="text" id="guestLoginInput" placeholder="Yangi mehmon logini" />
+            <input type="password" id="guestPassInput" placeholder="Yangi parol" />
+          </div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+            <button type="button" class="btn btn-success" id="registerGuestBtn">Mehmon sifatida ro‘yxatdan o‘tish</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-status-bar">
+        <span id="authStatusText">Holat: Tizimga kirilmagan (mehmon sifatida ro‘yxatdan o‘tish yoki login/parol bilan kirish mumkin).</span>
+        <span id="authTimeText"></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="controls-left">
+      <div class="group-filter-box">
+        <select id="groupFilterSelect" aria-label="Guruh bo‘yicha filtr">
+          <option value="ALL">Guruh filtri: Barcha guruhlar</option>
+          <option value="KI-2301">Guruh: KI-2301 (7-semestr)</option>
+          <option value="KI-2302">Guruh: KI-2302 (7-semestr)</option>
+          <option value="KI-2401">Guruh: KI-2401 (5-semestr • Elektron hukumat)</option>
+          <option value="KI(ax)-2401">Guruh: KI(ax)-2401 (5-semestr • Elektron hukumat)</option>
+          <option value="MEHMON">Mehmonlar</option>
+        </select>
+      </div>
+      <div class="filter-tabs">
+        <button type="button" class="tab-btn active" data-filter="all" id="filterAllBtn">Barcha mavzular (15)</button>
+        <button type="button" class="tab-btn" data-filter="completed">Yakunlangan</button>
+        <button type="button" class="tab-btn" data-filter="pending">Bajarilmagan</button>
+      </div>
+    </div>
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Mavzu nomi, atama yoki buyruq..." />
+    </div>
+  </div>
+
+  <main class="container">
+    <div class="grid" id="topicsGrid"></div>
+  </main>
+
+  <!-- Mavzu Modali -->
+  <div class="modal-bg" id="topicModal">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <span class="num-badge" id="modalBadge">1-amaliy mashg‘ulot • 2 soat</span>
+          <h2 id="modalTitle" style="margin-top:6px;">Mavzu nomi</h2>
+        </div>
+        <button type="button" class="close-x" id="closeTopicModal">&times;</button>
+      </div>
+
+      <div class="section-box theory-content">
+        <h4>1. Nazariy qism: Asosiy tushunchalar, qoidalar va namunalar</h4>
+        <div id="modalTheory"></div>
+      </div>
+
+      <div class="section-box practice">
+        <h4>2. Amaliy mashg‘ulotni bajarish vazifalari</h4>
+        <div class="lab-meta-grid">
+          <div class="lab-meta-item">
+            <strong>Mashg‘ulot maqsadi:</strong>
+            <div id="labGoal" style="margin-top:4px; color:var(--muted);"></div>
+          </div>
+          <div class="lab-meta-item">
+            <strong>Kutiladigan amaliy natija:</strong>
+            <div id="labDeliverable" style="margin-top:4px; color:var(--muted);"></div>
+          </div>
+        </div>
+        <strong style="font-size:0.9rem;">Amaliy ishni bajarish bosqichlari:</strong>
+        <ol id="modalPracticeSteps" style="margin-top:6px;"></ol>
+
+        <div style="margin-top:12px;">
+          <label for="labNoteInput" style="display:block; font-size:0.88rem; font-weight:600; margin-bottom:5px;">
+            Talabaning amaliy ish bo‘yicha xulosasi / bajarilgan topshiriq izohi:
+          </label>
+          <textarea id="labNoteInput" placeholder="Amaliy mashg‘ulotda bajargan ishlaringiz va xulosalaringizni yozing..."></textarea>
+        </div>
+      </div>
+
+      <div class="section-box interactive">
+        <h4>3. Interaktiv amaliy mashqlar (Testdan tashqari mustahkamlash)</h4>
+
+        <div style="margin-bottom:16px;">
+          <strong style="font-size:0.93rem; display:block; margin-bottom:8px;">3.1. Moslashtiring: Har bir tushuncha yoki vositaga mos vazifani tanlang</strong>
+          <div id="matchingContainer"></div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:8px;">
+            <button type="button" class="btn btn-purple btn-sm" id="checkMatchBtn">Moslashtirishni tekshirish</button>
+            <span class="mini-feedback" id="matchFeedback"></span>
+          </div>
+        </div>
+
+        <hr style="border:none; border-top:1px solid #e9d5ff; margin:14px 0;" />
+
+        <div>
+          <strong style="font-size:0.93rem; display:block; margin-bottom:8px;">3.2. Ketma-ketlikni to‘g‘ri tartiblang (↑ / ↓ tugmalari yordamida qadamlarni to‘g‘ri joylashtiring)</strong>
+          <div id="orderingContainer"></div>
+          <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-top:8px;">
+            <button type="button" class="btn btn-purple btn-sm" id="checkOrderBtn">Ketma-ketlikni tekshirish</button>
+            <span class="mini-feedback" id="orderFeedback"></span>
+          </div>
+        </div>
+      </div>
+
+      <h4 style="margin-bottom:8px; font-size:1.05rem;">4. Yakuniy nazorat testi (10 ta savol)</h4>
+      <div class="quiz-toolbar">
+        <span id="answeredCounter">Javob berildi: 0 / 10</span>
+        <div class="q-jump-list" id="qJumpList"></div>
+      </div>
+      <div id="modalQuiz"></div>
+
+      <div class="result-banner" id="quizResultBanner"></div>
+
+      <div class="no-print" style="margin-top:18px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-outline" id="resetQuizBtn">Javoblarni tozalash</button>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-outline" id="cancelTopicBtn">Yopish</button>
+          <button type="button" class="btn btn-accent" id="sendSingleToSheetBtn">Google Sheets’ga yuborish</button>
+          <button type="button" class="btn btn-success" id="checkQuizBtn">Testni tekshirish va saqlash</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Foydalanuvchi Shaxsiy Hisoboti Modali -->
+  <div class="modal-bg" id="reportModal">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <h2>O‘zlashtirish hisoboti</h2>
+          <p id="reportStudentInfo" style="font-size:0.9rem; color:var(--muted); margin-top:4px;"></p>
+        </div>
+        <button type="button" class="close-x" id="closeReportModal">&times;</button>
+      </div>
+
+      <div id="reportOverallSummary" style="font-weight:700; margin-bottom:8px; color:var(--primary-dark);"></div>
+
+      <div id="reportImSection">
+        <h3 class="report-sub-title">1-bo‘lim: Internet marketing</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Mavzu</th>
+                <th>Holati</th>
+                <th>Amaliy mashqlar</th>
+                <th>Test balli</th>
+                <th>Bajarilgan vaqt</th>
+                <th>Amaliy izoh</th>
+              </tr>
+            </thead>
+            <tbody id="reportImBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="reportWinSection">
+        <h3 class="report-sub-title">2-bo‘lim: Windows operatsion tizimida administrlash</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Mavzu</th>
+                <th>Holati</th>
+                <th>Amaliy mashqlar</th>
+                <th>Test balli</th>
+                <th>Bajarilgan vaqt</th>
+                <th>Amaliy izoh</th>
+              </tr>
+            </thead>
+            <tbody id="reportWinBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div id="reportEgovSection">
+        <h3 class="report-sub-title">3-bo‘lim: Elektron hukumat (KI-2401, KI(ax)-2401)</h3>
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>№</th>
+                <th>Mavzu</th>
+                <th>Holati</th>
+                <th>Amaliy mashqlar</th>
+                <th>Test balli</th>
+                <th>Bajarilgan vaqt</th>
+                <th>Amaliy izoh</th>
+              </tr>
+            </thead>
+            <tbody id="reportEgovBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="no-print" style="margin-top:18px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-outline" id="clearProgressBtn" style="color:var(--danger);">Natijalarimni tozalash</button>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button type="button" class="btn btn-accent" id="syncAllToSheetBtn">Barcha natijalarni Sheets’ga yuborish</button>
+          <button type="button" class="btn btn-outline" onclick="window.print()">Chop etish / PDF</button>
+          <button type="button" class="btn btn-primary" id="closeReportBtn2">Yopish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADMIN STATISTIKA VA MONITORING PANELI MODALI -->
+  <div class="modal-bg" id="adminModal">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <h2>Admin statistika va nazorat paneli — Sattarova Surayyo Beknazarovna</h2>
+          <p style="font-size:0.88rem; color:var(--muted); margin-top:4px;">Barcha 76 nafar talaba (KI-2301, KI-2302, KI-2401, KI(ax)-2401) hamda mehmonlar ro‘yxati, kirish vaqtlari va topshiriq natijalari.</p>
+        </div>
+        <button type="button" class="close-x" id="closeAdminModal">&times;</button>
+      </div>
+
+      <div class="admin-stats" id="adminStatsGrid"></div>
+
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-bottom:14px;">
+        <select id="adminGroupSelect" style="max-width:265px;">
+          <option value="ALL">Barcha guruhlar (76 talaba)</option>
+          <option value="KI-2301">KI-2301 (7-semestr • 18 talaba)</option>
+          <option value="KI-2302">KI-2302 (7-semestr • 18 talaba)</option>
+          <option value="KI-2401">KI-2401 (5-semestr • 24 talaba)</option>
+          <option value="KI(ax)-2401">KI(ax)-2401 (5-semestr • 16 talaba)</option>
+        </select>
+        <input type="text" id="adminSearchInput" placeholder="Talaba yoki mehmon F.I.Sh / login qidiruv..." style="max-width:320px;" />
+      </div>
+
+      <h3 class="report-sub-title">1. Talabalar ro‘yxati, login/parollari va kirish vaqtlari</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Guruh</th>
+              <th>Talaba F.I.Sh</th>
+              <th>Login</th>
+              <th>Parol</th>
+              <th>Oxirgi kirish vaqti</th>
+              <th>Yakunlangan</th>
+            </tr>
+          </thead>
+          <tbody id="adminStudentsBody"></tbody>
+        </table>
+      </div>
+
+      <h3 class="report-sub-title">2. Mehmonlar ro‘yxati (Alohida bo‘lim)</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>№</th>
+              <th>Mehmon F.I.Sh</th>
+              <th>Tashkilot / OTM</th>
+              <th>Login</th>
+              <th>Ro‘yxatdan o‘tgan vaqt</th>
+              <th>Oxirgi kirish vaqti</th>
+              <th>Ishlangan mavzular</th>
+            </tr>
+          </thead>
+          <tbody id="adminGuestsBody"></tbody>
+        </table>
+      </div>
+
+      <h3 class="report-sub-title">3. Barcha foydalanuvchilar (Talabalar va Mehmonlar) ishlagan topshiriqlar va vaqtlari</h3>
+      <div style="overflow-x:auto;">
+        <table>
+          <thead>
+            <tr>
+              <th>Turi / Guruh</th>
+              <th>F.I.Sh</th>
+              <th>Fan</th>
+              <th>Mavzu</th>
+              <th>Amaliy mashqlar</th>
+              <th>Test balli</th>
+              <th>Bajarilgan vaqt</th>
+              <th>Amaliy izoh</th>
+            </tr>
+          </thead>
+          <tbody id="adminSubmissionsBody"></tbody>
+        </table>
+      </div>
+
+      <div class="no-print" style="margin-top:18px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-outline" id="exportAdminCsvBtn">CSV yuklab olish (Talabalar + Mehmonlar)</button>
+        <div style="display:flex; gap:10px;">
+          <button type="button" class="btn btn-outline" onclick="window.print()">Chop etish / PDF</button>
+          <button type="button" class="btn btn-primary" id="closeAdminBtn2">Yopish</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Google Sheets Sozlamasi Modali -->
+  <div class="modal-bg" id="sheetModal">
+    <div class="modal">
+      <div class="modal-head">
+        <div>
+          <h2>Google Sheets integratsiyasi sozlamasi</h2>
+          <p style="font-size:0.88rem; color:var(--muted); margin-top:4px;">Web App URL avtomatik ulangan (zarurat bo‘lsa yangilashingiz mumkin).</p>
+        </div>
+        <button type="button" class="close-x" id="closeSheetModal">&times;</button>
+      </div>
+
+      <div class="sheet-box">
+        <h4>Google Apps Script Web App URL</h4>
+        <input type="url" id="sheetWebhookInput" placeholder="https://script.google.com/macros/s/.../exec" />
+        <div style="margin-top:10px; display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+          <button type="button" class="btn btn-primary" id="saveSheetUrlBtn">URL ni saqlash</button>
+          <span id="sheetSaveStatus" style="font-size:0.86rem; color:var(--success); font-weight:600;"></span>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end;">
+        <button type="button" class="btn btn-primary" id="closeSheetBtn2">Yopish</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    Urganch Ranch Texnologiya Universiteti • Raqamli texnologiyalar kafedrasi • Admin: Sattarova Surayyo Beknazarovna • 2026–2027 o‘quv yili
+  </footer>
+
+  <script>
+    window.onerror = function (msg, url, line) {
+      const b = document.getElementById("jsErrorBanner");
+      if (b) {
+        b.style.display = "block";
+        b.textContent = "Skript xatoligi aniqlandi (qator " + line + "): " + msg;
+      }
+    };
+
+    const DEFAULT_SHEET_URL = "https://script.google.com/macros/s/AKfycbxDsCjuLjpbCU85jKolo_LCTvH2WcHPT9JsmccVxyNv9kf77a1szUYbPuxjTHqmrp20Kg/exec";
+
+    const ADMIN_CREDENTIALS = {
+      login: "admin_sattarova",
+      password: "Admin#2026",
+      fullName: "Sattarova Surayyo Beknazarovna"
+    };
+
+    const INITIAL_STUDENTS = [
+      { num: 1, group: "KI-2301", fullName: "MASHARIPOV UMRBEK AMINOVICH", login: "masharipov_u_2301", password: "2301#01" },
+      { num: 2, group: "KI-2301", fullName: "SAFAYEV SULTONBOY RUSTAMBOY O'G'LI", login: "safayev_s_2301", password: "2301#02" },
+      { num: 3, group: "KI-2301", fullName: "KOMILOV MUXAMMAD QUVONDIQ O'G'LI", login: "komilov_m_2301", password: "2301#03" },
+      { num: 4, group: "KI-2301", fullName: "RAZZAKOV SUXROB UMRBEK O'G'LI", login: "razzakov_s_2301", password: "2301#04" },
+      { num: 5, group: "KI-2301", fullName: "SATIPOV AKBAR FERUZBEK O'G'LI", login: "satipov_a_2301", password: "2301#05" },
+      { num: 6, group: "KI-2301", fullName: "OTABOYEV SHOXRUX FARXOD O'G'LI", login: "otaboyev_s_2301", password: "2301#06" },
+      { num: 7, group: "KI-2301", fullName: "BAXTIYAROVA NILUFAR FARXOD QIZI", login: "baxtiyarova_n_2301", password: "2301#07" },
+      { num: 8, group: "KI-2301", fullName: "OTABOYEV JAHONGIRBEK NURIDDIN O'G'LI", login: "otaboyev_j_2301", password: "2301#08" },
+      { num: 9, group: "KI-2301", fullName: "BAXTIYAROVA MOHINUR BAXTIYAR QIZI", login: "baxtiyarova_m_2301", password: "2301#09" },
+      { num: 10, group: "KI-2301", fullName: "OTABOYEV AHMADJON JAMOL O'G'LI", login: "otaboyev_a_2301", password: "2301#10" },
+      { num: 11, group: "KI-2301", fullName: "YANGIBOYEVA QUNDUZOY DILSHOD QIZI", login: "yangiboyeva_q_2301", password: "2301#11" },
+      { num: 12, group: "KI-2301", fullName: "ALIMOVA ZULFIYA QADIRBERGAN QIZI", login: "alimova_z_2301", password: "2301#12" },
+      { num: 13, group: "KI-2301", fullName: "JUMANIYOZOVA NASIBA KADAMBOY QIZI", login: "jumaniyozova_n_2301", password: "2301#13" },
+      { num: 14, group: "KI-2301", fullName: "KARIMOVA OSIYA UMRBEK QIZI", login: "karimova_o_2301", password: "2301#14" },
+      { num: 15, group: "KI-2301", fullName: "MADAMINOV SOBIRJON XAMDAM O'G'LI", login: "madaminov_s_2301", password: "2301#15" },
+      { num: 16, group: "KI-2301", fullName: "O'RINBOYEVA RUHSHONA MADIYOR QIZI", login: "orinboyeva_r_2301", password: "2301#16" },
+      { num: 17, group: "KI-2301", fullName: "RAXIMBOYEV RAXIMALI RUSLAN O'G'LI", login: "raximboyev_r_2301", password: "2301#17" },
+      { num: 18, group: "KI-2301", fullName: "YUSUPOVA ZUHRA OLIM QIZI", login: "yusupova_z_2301", password: "2301#18" },
+
+      { num: 1, group: "KI-2302", fullName: "SHARIPOV TEMUR BAXODIR O'G'LI", login: "sharipov_t_2302", password: "2302#01" },
+      { num: 2, group: "KI-2302", fullName: "FARXODOVA MARJONA DAVRONBEK QIZI", login: "farxodova_m_2302", password: "2302#02" },
+      { num: 3, group: "KI-2302", fullName: "OZODOVA MAFTUNA MANSURBEK QIZI", login: "ozodova_m_2302", password: "2302#03" },
+      { num: 4, group: "KI-2302", fullName: "BOG'IBEKOV JAHON ZAFARBEK O'G'LI", login: "bogibekov_j_2302", password: "2302#04" },
+      { num: 5, group: "KI-2302", fullName: "AMINBOYEV BEKZOD IKROM O'G'LI", login: "aminboyev_b_2302", password: "2302#05" },
+      { num: 6, group: "KI-2302", fullName: "JUMANAZAROV SHOXZODBEK SHONAZAR O'G'LI", login: "jumanazarov_s_2302", password: "2302#06" },
+      { num: 7, group: "KI-2302", fullName: "XOLMURATOV JAVOXIR EGAMBERGAN O'G'LI", login: "xolmuratov_j_2302", password: "2302#07" },
+      { num: 8, group: "KI-2302", fullName: "RUSTAMOV BAXODIR ZAFAR O'G'LI", login: "rustamov_b_2302", password: "2302#08" },
+      { num: 9, group: "KI-2302", fullName: "ISMOILOV IBROHIMJON BOBOXON O'G'LI", login: "ismoilov_i_2302", password: "2302#09" },
+      { num: 10, group: "KI-2302", fullName: "OZODOV UMIDBEK UMRBEK O'G'LI", login: "ozodov_u_2302", password: "2302#10" },
+      { num: 11, group: "KI-2302", fullName: "ABDULLAYEV SOBURJON ULUG'BEK O'G'LI", login: "abdullayev_s_2302", password: "2302#11" },
+      { num: 12, group: "KI-2302", fullName: "IBRAXIMOV AKMALJON MURODBEK O'G'LI", login: "ibraximov_a_2302", password: "2302#12" },
+      { num: 13, group: "KI-2302", fullName: "ATAXANOVA AZIZA ERKIN QIZI", login: "ataxanova_a_2302", password: "2302#13" },
+      { num: 14, group: "KI-2302", fullName: "MADIYOROV MASHHURBEK OTABEK O'G'LI", login: "madiyorov_m_2302", password: "2302#14" },
+      { num: 15, group: "KI-2302", fullName: "SA'DULLAYEVA RUHSHONA O'TKIR QIZI", login: "sadullayeva_r_2302", password: "2302#15" },
+      { num: 16, group: "KI-2302", fullName: "KOMILJONOVA KOMILA RAJABBOY QIZI", login: "komiljonova_k_2302", password: "2302#16" },
+      { num: 17, group: "KI-2302", fullName: "AKSHIMOV DILSHOD AXMEDOVICH", login: "akshimov_d_2302", password: "2302#17" },
+      { num: 18, group: "KI-2302", fullName: "O'RINBOYEV MIRJALOL MAQSADBOY O'G'LI", login: "orinboyev_m_2302", password: "2302#18" },
+
+      { num: 1, group: "KI-2401", fullName: "ATAXANOV MA'RUFJON G'AYRAT O'G'LI", login: "ataxanov_m_2401", password: "2401#01" },
+      { num: 2, group: "KI-2401", fullName: "TUYLIYEVA SHAYDO ANVAR QIZI", login: "tuyliyeva_s_2401", password: "2401#02" },
+      { num: 3, group: "KI-2401", fullName: "XABIBULLOYEV SANJARBEK QUDRAT O'G'LI", login: "xabibulloyev_s_2401", password: "2401#03" },
+      { num: 4, group: "KI-2401", fullName: "KOMILBAYEV KAMRONBEK SANJAR O'G'LI", login: "komilbayev_k_2401", password: "2401#04" },
+      { num: 5, group: "KI-2401", fullName: "G'AFFOROVA XURSHIDA MANSUR QIZI", login: "gafforova_x_2401", password: "2401#05" },
+      { num: 6, group: "KI-2401", fullName: "QALANDAROV MURODBEK MUXTOR O'G'LI", login: "qalandarov_m_2401", password: "2401#06" },
+      { num: 7, group: "KI-2401", fullName: "UMIRZAKOV AHMEDJON TAJIBOY O'G'LI", login: "umirzakov_a_2401", password: "2401#07" },
+      { num: 8, group: "KI-2401", fullName: "O'ROZBOYEVA MAFTUNA SHERZOD QIZI", login: "orozboyeva_m_2401", password: "2401#08" },
+      { num: 9, group: "KI-2401", fullName: "ODILBEKOV XUDOYSHUKUR MANSUR O'G'LI", login: "odilbekov_x_2401", password: "2401#09" },
+      { num: 10, group: "KI-2401", fullName: "OZODOV SHODLIK QUVONCHBEK O'G'LI", login: "ozodov_s_2401", password: "2401#10" },
+      { num: 11, group: "KI-2401", fullName: "YANGIBOYEV RAVSHANBEK XURSHID O'G'LI", login: "yangiboyev_r_2401", password: "2401#11" },
+      { num: 12, group: "KI-2401", fullName: "MATYUSUPOV SHOHRUHBEK ALISHER O'G'LI", login: "matyusupov_s_2401", password: "2401#12" },
+      { num: 13, group: "KI-2401", fullName: "GULIMBOYEV XUSHNUD OZODBOY O'G'LI", login: "gulimboyev_x_2401", password: "2401#13" },
+      { num: 14, group: "KI-2401", fullName: "TANGRIBERGANOV SHOHRUH XAMIDOVICH", login: "tangriberganov_s_2401", password: "2401#14" },
+      { num: 15, group: "KI-2401", fullName: "JUMANAZAROVA NOZIMA ALISHER QIZI", login: "jumanazarova_n_2401", password: "2401#15" },
+      { num: 16, group: "KI-2401", fullName: "ABDULLAYEV SARDORBEK RASULBEK O'G'LI", login: "abdullayev_s_2401", password: "2401#16" },
+      { num: 17, group: "KI-2401", fullName: "YAXSHIMURATOVA GULJAHON RUSLON QIZI", login: "yaxshimuratova_g_2401", password: "2401#17" },
+      { num: 18, group: "KI-2401", fullName: "SHUKURULLAYEVA SHAHNOZA SHERZOD QIZI", login: "shukurullayeva_s_2401", password: "2401#18" },
+      { num: 19, group: "KI-2401", fullName: "XUJANIYAZOV DIYORBEK OTABEK O'G'LI", login: "xujaniyazov_d_2401", password: "2401#19" },
+      { num: 20, group: "KI-2401", fullName: "BEKTURDIYEVA DIYORA UMARBEK QIZI", login: "bekturdiyeva_d_2401", password: "2401#20" },
+      { num: 21, group: "KI-2401", fullName: "ABDIRIMOV BOBOXON FARXOD O'G'LI", login: "abdirimov_b_2401", password: "2401#21" },
+      { num: 22, group: "KI-2401", fullName: "MARATOV RASULBEK NODIRBEK O'G'LI", login: "maratov_r_2401", password: "2401#22" },
+      { num: 23, group: "KI-2401", fullName: "SA'DULLAYEV ISROIL RUSLAN O'G'LI", login: "sadullayev_i_2401", password: "2401#23" },
+      { num: 24, group: "KI-2401", fullName: "YULDASHEV OTABEK", login: "yuldashev_o_2401", password: "2401#24" },
+
+      { num: 1, group: "KI(ax)-2401", fullName: "PIRNAZAROV IBRAHIM DURUMBOY O'G'LI", login: "pirnazarov_i_2401ax", password: "2401ax#01" },
+      { num: 2, group: "KI(ax)-2401", fullName: "BAXTIYOROV BOBUR SHERXON O'G'LI", login: "baxtiyorov_b_2401ax", password: "2401ax#02" },
+      { num: 3, group: "KI(ax)-2401", fullName: "RAXIMOV ZAFARBEK MAXMUD O'G'LI", login: "raximov_z_2401ax", password: "2401ax#03" },
+      { num: 4, group: "KI(ax)-2401", fullName: "NAZARBAYEVA SEVARA MUZAFFAR QIZI", login: "nazarbayeva_s_2401ax", password: "2401ax#04" },
+      { num: 5, group: "KI(ax)-2401", fullName: "OTAXONOV UMIDJON ULUG'BEK O'G'LI", login: "otaxonov_u_2401ax", password: "2401ax#05" },
+      { num: 6, group: "KI(ax)-2401", fullName: "SHONAZAROV JAMSHIDBEK JASURBEK O'G'LI", login: "shonazarov_j_2401ax", password: "2401ax#06" },
+      { num: 7, group: "KI(ax)-2401", fullName: "AZIMBAYEV SHOXRUXBEK IXTIYOR O'G'LI", login: "azimbayev_s_2401ax", password: "2401ax#07" },
+      { num: 8, group: "KI(ax)-2401", fullName: "RAXIMOVA SHOXSANAM IXTIYOR QIZI", login: "raximova_s_2401ax", password: "2401ax#08" },
+      { num: 9, group: "KI(ax)-2401", fullName: "QODIROV DOSTONBEK AZAMAT O'G'LI", login: "qodirov_d_2401ax", password: "2401ax#09" },
+      { num: 10, group: "KI(ax)-2401", fullName: "BAXTIYOROV MUSTAFO RAVSHONBEK O'G'LI", login: "baxtiyorov_m_2401ax", password: "2401ax#10" },
+      { num: 11, group: "KI(ax)-2401", fullName: "MUSTAFOQULOV SARVARBEK XUSINBOY O'G'LI", login: "mustafoqulov_s_2401ax", password: "2401ax#11" },
+      { num: 12, group: "KI(ax)-2401", fullName: "RO'ZIMBAYEV SHERZOD OYBEK O'G'LI", login: "rozimbayev_s_2401ax", password: "2401ax#12" },
+      { num: 13, group: "KI(ax)-2401", fullName: "MADAMINOV OG'ABEK KAMOL O'G'LI", login: "madaminov_o_2401ax", password: "2401ax#13" },
+      { num: 14, group: "KI(ax)-2401", fullName: "DAVLATBOYEV SUHROB ELYOR O'G'LI", login: "davlatboyev_s_2401ax", password: "2401ax#14" },
+      { num: 15, group: "KI(ax)-2401", fullName: "OTAXANOV MAHKAMBEK HAMDAM O'G'LI", login: "otaxanov_m_2401ax", password: "2401ax#15" },
+      { num: 16, group: "KI(ax)-2401", fullName: "YULDOSHEV DIYORBEK OYBEK O'G'LI", login: "yuldoshev_d_2401ax", password: "2401ax#16" }
+    ];
+
+    function getAllowedSubjectKeysForGroup(groupName) {
+      if (groupName === "KI-2301" || groupName === "KI-2302") return ["im", "win"];
+      if (groupName === "KI-2401" || groupName === "KI(ax)-2401") return ["egov"];
+      return ["im", "win", "egov"];
+    }
+
+    function applySubjectTheme(subjectKey) {
+      document.body.classList.remove("theme-im", "theme-win", "theme-egov");
+      if (subjectKey === "win") {
+        document.body.classList.add("theme-win");
+      } else if (subjectKey === "egov") {
+        document.body.classList.add("theme-egov");
+      } else {
+        document.body.classList.add("theme-im");
+      }
+    }
+
+    function buildTenQuestions(topic, subjectKey) {
+      const t = topic.title.replace(/\.$/, "");
+      const s = topic.summary;
+
+      if (subjectKey === "egov") {
+        return [
+          { q: `"${t}" mavzusining elektron hukumat tizimidagi asosiy vazifasi nimadan iborat?`, options: [`${s} bo‘yicha davlat boshqaruvi va raqamli xizmatlar samaradorligini oshirish`, "Faqat o‘yin dasturlarini ishlab chiqish", "Qog‘oz hujjatlarni ko‘paytirish", "Axborot tizimlarini o‘chirib qo‘yish"], correct: 0, explain: `Mavzu ${s} doirasida davlat xizmatlarini rivojlantirishga qaratilgan.` },
+          { q: "Elektron hukumatda G2C (Government to Citizen) modeli nimani anglatadi?", options: ["Davlat organlari va fuqarolar o‘rtasidagi raqamli xizmatlar almashinuvini", "Faqat xorijiy kompaniyalar savdosini", "Kompyuter qismlarini ta’mirlashni", "Internet tezligini o‘lchashni"], correct: 0, explain: "G2C davlatning fuqarolarga interaktiv xizmat ko‘rsatish modelidir." },
+          { q: "G2B (Government to Business) modeli kimlar o‘rtasidagi munosabatni tartibga soladi?", options: ["Davlat organlari va tadbirkorlik subyektlari (biznes) o‘rtasidagi elektron xizmatlarni", "Faqat talabalar o‘rtasidagi chatni", "Uy jihozlari do‘konini", "Antivirus dasturlarini"], correct: 0, explain: "G2B litsenziya, soliq hisobotlari va davlat xaridlari kabi biznes xizmatlarini qamrab oladi." },
+          { q: "Davlat interaktiv xizmatlaridan foydalanishning asosiy afzalligi nimada?", options: ["Vaqt va xarajatni tejash, navbatlarni kamaytirish va shaffoflikni ta’minlash", "Hujjatlarni faqat qo‘lda yozish", "Xizmat muddatini uzaytirish", "Ma’lumotlarni yashirish"], correct: 0, explain: "Interaktiv xizmatlar masofadan turib tez va shaffof xizmat olish imkonini beradi." },
+          { q: "Elektron hukumat tizimida axborot oqimi logistikasi nimani ta’minlaydi?", options: ["Idoralararo ma’lumotlarning o‘z vaqtida, aniq va takroriy so‘rovlarsiz almashishini", "Fayllarni o‘chirib yuborishni", "Tarmoq kabelini uzishni", "Matn shriftini o‘zgartirishni"], correct: 0, explain: "Axborot logistikasi idoralararo integratsiya va ma’lumotlar harakatini boshqaradi." },
+          { q: "Elektron hujjat aylanish tizimlarida (EHAT) elektron raqamli imzo (ERI) qanday vazifani bajaradi?", options: ["Hujjatning yuridik kuchini, muallifligini va o‘zgartirilmaganligini tasdiqlaydi", "Faqat rasm rangini o‘zgartiradi", "Kompyuterni o‘chiradi", "Brauzer tarixini tozalaydi"], correct: 0, explain: "ERI elektron hujjatga qog‘oz hujjatdagi imzo bilan teng yuridik kuch beradi." },
+          { q: "Ochiq ma’lumotlar portallari (Open Data) jamiyat va iqtisodiyotga qanday foyda beradi?", options: ["Davlat organlari faoliyati ochiqligini oshiradi va ilova yaratish uchun ma’lumot beradi", "Shaxsiy parollarni e’lon qiladi", "Serverlarni to‘xtatadi", "Hech qanday foydasi yo‘q"], correct: 0, explain: "Ochiq ma’lumotlar shaffoflikni kuchaytiradi va yangi xizmatlar yaratishga yordam beradi." },
+          { q: "Elektron to‘lov tizimlari elektron hukumat xizmatlarida nimaga xizmat qiladi?", options: ["Davlat bojlari, soliqlar va kommunal to‘lovlarni masofadan tezkor amalga oshirishga", "Faqat video ko‘rishga", "Diskni formatlashga", "Klaviatura tilini almashtirishga"], correct: 0, explain: "Elektron to‘lov tizimlari davlat xizmatlari uchun to‘lovlarni onlayn yakunlash imkonini beradi." },
+          { q: "Elektron hukumat tarmoqlarida axborot xavfsizligi va konfidensiallikni ta’minlash uchun nima zarur?", options: ["Shifrlash, autentifikatsiya, kirish huquqlarini cheklash va risklarni baholash", "Parolsiz kirishni ochish", "Yangilanishlarni o‘chirish", "Loglarni o‘chirish"], correct: 0, explain: "Shaxsiy va davlat ma’lumotlarini himoyalash uchun texnik va tashkiliy choralar qo‘llaniladi." },
+          { q: `"${t}" amaliy mashg‘uloti yakunida talaba qanday natijaga ega bo‘lishi kerak?`, options: ["Nazariy bilimlarni amaliy tahlil, portal/tizim misollari va xavfsizlik mezonlari bilan asoslash", "Faqat mavzu nomini yodlash", "Savollarni o‘qimasdan belgilash", "Hisobot yozmaslik"], correct: 0, explain: "Amaliy mashg‘ulot tizimli tahlil va amaliy qo‘llash ko‘nikmasini shakllantiradi." }
+        ];
+      }
+
+      if (subjectKey === "im") {
+        return [
+          { q: `"${t}" amaliy mashg‘ulotining asosiy maqsadi nimadan iborat?`, options: [`${s} bo‘yicha nazariy bilimlarni amaliy vazifalarda qo‘llash`, "Faqat sahifa rangini o‘zgartirish", "Ijtimoiy tarmoq hisobini o‘chirish", "Statistikani yashirish"], correct: 0, explain: `Mashg‘ulot ${s} yo‘nalishida amaliy ko‘nikmalar shakllantirishga qaratilgan.` },
+          { q: "Amaliy ishni boshlashdan oldin birinchi navbatda nimani aniqlash muhim?", options: ["Loyiha/biznes maqsadi va maqsadli auditoriya ehtiyojini", "Tasodifiy raqamlarni", "Faqat rasm o‘lchamini", "Brauzer versiyasini"], correct: 0, explain: "Aniq maqsad va auditoriya ehtiyoji keyingi marketing qarorlariga asos bo‘ladi." },
+          { q: "SMM va internet marketingda natijalarni baholashda nimaga tayaniladi?", options: ["O‘lchanadigan ko‘rsatkichlar (Reach, ER, CTR, konversiya, byudjet samarasi) ga", "Faqat taxminiy fikrga", "Boshqa fanlarning bahosiga", "Postlar sonining kamligiga"], correct: 0, explain: "Aniq metrikalar qilingan ishning real samarasini ko‘rsatadi." },
+          { q: "Auditoriyaga yo‘naltirilgan xabarda nimaning aniq bo‘lishi samarani oshiradi?", options: ["Foydalanuvchi oladigan foyda va keyingi aniq harakat chaqiruvi (CTA) ning", "Murakkab atamalarning", "Uzun kirish matnining", "Ma’lumotlarning yo‘qligining"], correct: 0, explain: "Foyda va nima qilish kerakligi aniq bo‘lsa, javob va konversiya oshadi." },
+          { q: "Raqobatchilar yoki bozor tajribasini o‘rganish qanday foyda beradi?", options: ["O‘z taklifni farqlash, kuchli tomonlarni rivojlantirish va xatolardan saqlanishga yordam beradi", "Raqobatchi sahifasini boshqarish imkonini beradi", "Reklama qoidalarini bekor qiladi", "Statistikani o‘chiradi"], correct: 0, explain: "Tahlil bozordagi o‘rinni to‘g‘ri tanlash va mazmunli yechim berishga xizmat qiladi." },
+          { q: "Kontent yoki reklama variantlarini sinovdan o‘tkazishda qaysi yondashuv to‘g‘ri?", options: ["Faraz qo‘yish, natijani solishtirish va eng samarali variantni tanlash", "Hamma sozlamani birdaniga tasodifiy o‘zgartirish", "Sinov natijasini ko‘rmasdan to‘xtatish", "Faqat bitta kishining fikriga qarab xulosa chiqarish"], correct: 0, explain: "Sinov va natijalarni solishtirish eng samarali yechimni tanlashga yordam beradi." },
+          { q: "Reklama yoki kontent kampaniyasida resurs/byudjetni boshqarish qanday bo‘lishi kerak?", options: ["Natijadorlik ko‘rsatkichlariga qarab muntazam kuzatib, optimallashtirib borish", "Ishga tushirgach umuman nazorat qilmaslik", "Samarasiz yo‘nalishga ko‘proq mablag‘ berish", "Statistikani o‘chirib qo‘yish"], correct: 0, explain: "Muntazam nazorat byudjetni samarasiz sarflashning oldini oladi." },
+          { q: "Mijoz yoki auditoriya bilan aloqada tezkorlik va izchillik nimani oshiradi?", options: ["Ishonch darajasini, murojaatlar konversiyasini va takroriy aloqa ehtimolini", "Sahifa yuklanish vaqtini uzaytiradi", "Izohlar sonini kamaytiradi", "Havolalarni buzadi"], correct: 0, explain: "O‘z vaqtida va izchil muloqot ishonch va natijadorlikni kuchaytiradi." },
+          { q: "Amaliy mashg‘ulot yakunida xulosa va tavsiyalar yozish nima uchun zarur?", options: ["Bajarilgan ishni umumlashtirish va keyingi bosqich uchun aniq qadamlarni belgilash uchun", "Hisobot hajmini sun’iy oshirish uchun", "Ma’lumotlarni yashirish uchun", "Test ballini kamaytirish uchun"], correct: 0, explain: "Tahliliy xulosa keyingi amaliy ishlarni yanada aniq rejalashtirishga yordam beradi." },
+          { q: `"${t}" mavzusida eng muhim amaliy ko‘nikma qaysi?`, options: ["Nazariy tushunchani real loyiha vazifasiga moslab qo‘llash va natijani asoslash", "Faqat atamani yodlab, amalda qo‘llamaslik", "Savollarni o‘qimasdan belgilash", "Natijani saqlamaslik"], correct: 0, explain: "Amaliy ko‘nikma nazariyani real vaziyatga tatbiq etish va natijani asoslashda namoyon bo‘ladi." }
+        ];
+      }
+
+      return [
+        { q: `"${t}" mashg‘ulotining asosiy amaliy yo‘nalishi nimadan iborat?`, options: [`${s} bo‘yicha Windows tizimini sozlash, boshqarish va tekshirish`, "Faqat matn terish va rasm chizish", "Tizim loglarini butunlay yo‘q qilish", "Antivirusni doimiy o‘chirish"], correct: 0, explain: `Mashg‘ulot ${s} bo‘yicha amaliy administratorlik ko‘nikmalarini shakllantiradi.` },
+        { q: "Windows ma’muriyatida tizim konfiguratsiyasini o‘zgartirishdan avval nima qilish tavsiya etiladi?", options: ["Imkon qadar zaxira nusxa/holatni qayd etish va o‘zgarish ta’sirini baholash", "Barcha xizmatlarni o‘chirib qo‘yish", "Tarmoq kabelini uzish", "Tekshirmasdan o‘chirish"], correct: 0, explain: "Ehtiyot chorasi va zaxira nusxa nosozlik yuz berganda tez tiklash imkonini beradi." },
+        { q: "Least privilege (eng kam imtiyoz) tamoyili amaliyotda nimani anglatadi?", options: ["Foydalanuvchi yoki jarayonga faqat vazifasini bajarish uchun zarur minimal huquq berish", "Hammani doimiy Administrator huquqi bilan ishlatish", "Barcha ruxsatlarni bloklash", "Parolsiz kirishni yoqish"], correct: 0, explain: "Minimal zarur huquqlar ruxsatsiz o‘zgarish va xavfsizlik xavfini kamaytiradi." },
+        { q: "Sozlama yoki buyruq bajarilgach uning to‘g‘ri ishlashini qanday tekshirish kerak?", options: ["Tegishli tizim vositasi, buyruq natijasi yoki log yozuvlari orqali tekshirish", "Faqat oynani yopish", "Taxmin qilish bilan cheklanish", "Kompyuterni elektrdan uzish"], correct: 0, explain: "Amaliy tekshiruv o‘zgartirishning kutilganidek ishlashini tasdiqlaydi." },
+        { q: "Windows ma’muriyatida buyruq satri yoki PowerShell’dan foydalanishning afzalligi nimada?", options: ["Amallarni tezkor, aniq va takrorlanuvchi tarzda bajarish imkonini beradi", "Grafik interfeysni butunlay o‘chiradi", "Faqat internet bo‘lmaganda ishlaydi", "Fayllarni o‘chiradi"], correct: 0, explain: "Buyruq vositalari ko‘p bosqichli ishlarni tez va tizimli bajarishga yordam beradi." },
+        { q: "Tizimda xatolik yoki ogohlantirish paydo bo‘lganda diagnostika qanday olib boriladi?", options: ["Simptomni kuzatish -> Log/diagnostika vositalari orqali sababni topish -> Tuzatish va sinash", "Sababni izlamasdan tizimni qayta o‘rnatish", "Xato xabarini o‘qimasdan yopish", "Barcha xizmatlarni to‘xtatish"], correct: 0, explain: "Bosqichma-bosqich diagnostika nosozlikning asl sababini aniqlashga yordam beradi." },
+        { q: "Xavfsizlik va tarmoq sozlamalarida ortiqcha ochiq ruxsat yoki qoidalar qoldirish nimaga olib keladi?", options: ["Hujum yuzasini kengaytirib, ruxsatsiz kirish xavfini oshiradi", "Tizimni tezlashtiradi", "Disk hajmini ko‘paytiradi", "Hech qanday xavf tug‘dirmaydi"], correct: 0, explain: "Ortiqcha ruxsat yoki ochiq portlar xavfsizlik talablariga zid keladi." },
+        { q: "Amaliy mashg‘ulot davomida bajarilgan bosqichlarni yozib borish nima uchun muhim?", options: ["Qilingan o‘zgarishlarni nazorat qilish, xatolarni aniqlash va hisobot tayyorlash uchun", "Sahifa sonini ko‘paytirish uchun", "Loglarni yashirish uchun", "Vaqt o‘tkazish uchun"], correct: 0, explain: "Tartibli qaydlar tizim boshqaruvida aniqlik va nazoratni ta’minlaydi." },
+        { q: "Test muhitida yoki o‘quv stendida sinovdan o‘tgan vaqtinchalik o‘zgarishlar bilan nima qilinadi?", options: ["Talabga muvofiq tartibga keltiriladi yoki asl/xavfsiz holatga qaytariladi", "Nazoratsiz qoldiriladi", "Tizim diski formatlanadi", "Loglar o‘chiriladi"], correct: 0, explain: "Sinovdan keyin tizimni toza va xavfsiz holatda saqlash muhim." },
+        { q: `"${t}" mavzusida amaliy yakuniy natija nimani ko‘rsatishi kerak?`, options: ["Topshiriq bosqichlarining to‘g‘ri bajarilganini, xatolik yo‘qligini va xavfsizlik saqlanganini", "Faqat ekrandagi oynalar ko‘pligini", "Javoblarning tasodifiy belgilanganini", "Tekshiruv o‘tkazilmaganini"], correct: 0, explain: "To‘g‘ri bajarilgan va tekshirilgan amaliy ish mavzuning o‘zlashtirilganini ko‘rsatadi." }
+      ];
+    }
+
+    const RAW_TOPICS = {
+      im: [
+        { id: "im_1", num: 1, title: "Ijtimoiy media marketingi (SMM) asoslarini tahlil qilish.", summary: "SMM maqsadlari, auditoriya bilan muloqot, organik va pullik harakatlantirish asoslari", theoryHtml: "<p><strong>SMM</strong> — ijtimoiy tarmoqlar orqali brendni tanitish, auditoriya bilan aloqa o‘rnatish, trafik jalb qilish va sotuvni oshirish jarayonidir.</p><ul class='theory-bullets'><li><strong>Reach va Impressions:</strong> qamrov va ko‘rishlar soni.</li><li><strong>ER (Engagement Rate):</strong> <code>((Layk + Izoh + Ulashish + Saqlash) / Qamrov) × 100%</code>.</li></ul><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> SMM, Reach, Impressions, ER, CTR, Conversion.</div>", goal: "SMM maqsadlarini aniqlash va raqobatchilarni tahlil qilish.", deliverable: "SMM tahlil jadvali va 3 ta ustuvor taklif.", steps: ["SMM maqsadini belgilang.", "2–3 raqobatchi sahifasini solishtiring.", "3 ta amaliy xulosa yozing."], matching: [{ left: "Reach (Qamrov)", right: "Kontentni ko‘rgan noyob foydalanuvchilar soni" }, { left: "Engagement Rate (ER)", right: "Auditoriyaning layk, izoh va ulashishlar orqali faollik darajasi" }, { left: "Organik harakatlantirish", right: "Reklama byudjetisiz, sifatli kontent va algoritm orqali o‘sish" }], ordering: ["Loyiha uchun aniq SMM maqsadini belgilash", "Maqsadli auditoriya va 2–3 raqobatchi sahifasini tahlil qilish", "Kontent formatlari va faollik ko‘rsatkichlarini solishtirish", "Tahlil asosida ustuvor takliflar va harakat rejasini shakllantirish"] },
+        { id: "im_2", num: 2, title: "Facebook platformasida biznes sahifa yaratish va boshqarish.", summary: "Facebook Business Page tuzilmasi, sozlamalar, rol taqsimoti va Meta Business Suite", theoryHtml: "<p><strong>Facebook Business Page</strong> — tashkilot yoki brendning rasmiy sahifasi bo‘lib, analitika, reklama ulash, jamoa rollari va xabarlar boshqaruvini beradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Business Page, Avatar/Cover, CTA tugmasi, Meta Business Suite.</div>", goal: "Facebook biznes sahifani loyihalash va rollarni sozlash.", deliverable: "Sahifa pasporti, CTA sozlamasi va rollar taqsimoti.", steps: ["Kategoriya, avatar va muqovani belgilang.", "CTA tugmasini tanlang.", "Rollarni va xabar tartibini sozlang."], matching: [{ left: "CTA tugmasi", right: "Foydalanuvchini xabar yozish yoki saytga o‘tish kabi harakatga undaydi" }, { left: "Meta Business Suite", right: "Sahifa postlari, xabarlari va statistikasini yagona oynada boshqarish vositasi" }, { left: "Rollar taqsimoti", right: "Jamoa a’zolariga faqat o‘z vazifasiga mos kirish huquqini berish" }], ordering: ["Biznes sahifa nomi va faoliyat kategoriyasini tanlash", "Avatar, muqova (cover) va batafsil tavsifni joylashtirish", "Asosiy harakat chaqiruvi (CTA) tugmasini va xabar shablonlarini sozlash", "Jamoa a’zolari uchun boshqaruv rollarini belgilash"] },
+        { id: "im_3", num: 3, title: "YouTube platformasida marketing faoliyatini tashkil etish.", summary: "YouTube kanal arxitekturasi, kalit so‘zlar (SEO), video tuzilmasi va tomoshabinni ushlab turish", theoryHtml: "<p><strong>YouTube SEO</strong> — sarlavha, tavsif va teglarni kalit so‘zlar bilan boyitish hamda mavzuli pleylistlar orqali ko‘rish vaqtini oshirishdir.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> YouTube SEO, pleylist, kalit so‘zlar, Hook, End Screen.</div>", goal: "YouTube kanal tuzilmasini va video SEO ni tayyorlash.", deliverable: "Kanal tavsifi, pleylistlar, kalit so‘zlar va ssenariy.", steps: ["Banner, tavsif va pleylistlarni rejalashtiring.", "Kalit so‘zli sarlavha va tavsif yozing.", "Video ssenariysini tayyorlang."], matching: [{ left: "YouTube SEO", right: "Sarlavha, tavsif va teglarni kalit so‘zlar asosida optimallashtirish" }, { left: "Pleylistlar", right: "Tomoshabinni ketma-ket videolarni ko‘rishga undab, Watch Time ni oshiradi" }, { left: "Hook (Kirish)", right: "Videoning dastlabki 10–15 soniyasida tomoshabin e’tiborini ushlab qolish" }], ordering: ["Kanal mavzusi, banneri va tavsifini shakllantirish", "Mavzular bo‘yicha alohida pleylistlar tuzilmasini yaratish", "Kalit so‘zlar asosida video sarlavhasi, tavsifi va teglarini yozish", "Hook, asosiy mazmun va End Screen/CTA dan iborat ssenariysini tayyorlash"] },
+        { id: "im_4", num: 4, title: "YouTube platformasida marketing faoliyatini tashkil etish.", summary: "Video kontent-reja, Shorts va uzun formatlar uyg‘unligi, analitika va auditoriyani rivojlantirish", theoryHtml: "<p><strong>YouTube Shorts</strong> yangi auditoriyani tez jalb qiladi, uzun videolar esa ekspertlik va ishonchni mustahkamlaydi. <strong>YouTube Analytics</strong> CTR va Average View Duration ko‘rsatkichlarini beradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> YouTube Analytics, CTR, Average View Duration, Shorts, Thumbnail.</div>", goal: "Analitika asosida kontent-rejani va formatlarni uyg‘unlashtirish.", deliverable: "2 ta Shorts g‘oyasi, 1 ta asosiy video va muqova g‘oyasi.", steps: ["CTR va ko‘rish vaqtini tahlil qiling.", "Shorts va asosiy video g‘oyalarini yozing.", "Muqova konsepsiyasini tuzing."], matching: [{ left: "YouTube Shorts", right: "Qisqa format orqali yangi auditoriyani tez jalb qilish vositasi" }, { left: "Thumbnail (Muqova)", right: "Videoning bosish ko‘rsatkichi (CTR) ga bevosita ta’sir qiluvchi vizual" }, { left: "Average View Duration", right: "Tomoshabin videoni o‘rtacha necha daqiqa/soniya ko‘rgani ko‘rsatkichi" }], ordering: ["YouTube Analytics da CTR va ko‘rish davomiyligi ko‘rsatkichlarini tahlil qilish", "Yangi auditoriya uchun 2 ta qisqa Shorts video ssenariysini tuzish", "Mavzuni chuqur yorituvchi 1 ta asosiy video va muqova (thumbnail) tayyorlash", "Nashr jadvalini belgilab, izohlar orqali auditoriya bilan muloqot o‘rnatish"] },
+        { id: "im_5", num: 5, title: "Instagram tarmog‘ida reklama va kontent joylashtirish.", summary: "Instagram bio, Reels, Karusel, Stories va reklama joylashtirish tamoyillari", theoryHtml: "<p><strong>Instagram</strong> da profil qadoqlanishi (Bio, Highlights), Karusel postlar, Reels va Stories birgalikda ishlaydi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Instagram Bio, Highlights, Karusel, Reels, Stories, Placement.</div>", goal: "Instagram profilini qadoqlash va ko‘p formatli kontent tuzish.", deliverable: "Bio/Highlights, Karusel/Reels/Stories rejasi va reklama sozlamalari.", steps: ["Bio va Highlights matnini yozing.", "Karusel, Reels va Stories ketma-ketligini tuzing.", "Reklama auditoriyasini belgilang."], matching: [{ left: "Karusel post", right: "Bir nechta slayd orqali bosqichma-bosqich qo‘llanma yoki taqqoslash berish" }, { left: "Highlights", right: "Muhim Stories larni profil boshida doimiy saqlab turish bo‘limi" }, { left: "Stories stikerlari", right: "So‘rovnoma va savollar orqali auditoriya bilan tezkor muloqot" }], ordering: ["Biznes profilga o‘tish va aniq qiymat taklifiga ega Bio yozish", "Asosiy bo‘limlar uchun Highlights yaratish", "Reels, Karusel va Stories formatlarida kontent joylashtirish", "Maqsadli auditoriya va byudjetni belgilab reklama kampaniyasini ishga tushirish"] },
+        { id: "im_6", num: 6, title: "SMMni internet tizimida harakatlantirish usullarini qo‘llash.", summary: "Organik o‘sish, hamkorliklar, cross-promo, UTM-metkalar va pullik reklama uyg‘unligi", theoryHtml: "<p>Trafik manbasini aniq o‘lchash uchun <strong>UTM-metkalar</strong> (<code>utm_source</code>, <code>utm_medium</code>, <code>utm_campaign</code>) ishlatiladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> organik o‘sish, cross-promo, UTM-metkalar, trafik voronkasi.</div>", goal: "Harakatlantirish usullarini tanlash va UTM-metkalar tuzish.", deliverable: "Harakatlantirish rejasi va UTM-havolalar namunasi.", steps: ["Organik, hamkorlik va pullik usullarni birlashtiring.", "UTM-metkalar tuzing.", "Trafik-konversiya yo‘lini chizing."], matching: [{ left: "utm_source", right: "Trafik kelgan aniq platforma yoki manbani ko‘rsatadi" }, { left: "utm_medium", right: "Trafik turini (social, cpc, referral) belgilaydi" }, { left: "Cross-promo", right: "O‘xshash auditoriyaga ega hamkor sahifalar bilan o‘zaro reklama" }], ordering: ["Harakatlantirish kanallarini tanlash", "Har bir kanal uchun alohida UTM-metkali havolalar yaratish", "Kontent va reklama postlarida UTM-havolalarni joylashtirish", "Analitika tizimida konversiya natijalarini tahlil qilish"] },
+        { id: "im_7", num: 7, title: "Biznesni rivojlantirishda SMM vositalaridan foydalanish.", summary: "SMM orqali lid generatsiya, mijozlar ishonchini oshirish, qayta aloqa va takroriy sotuvlar", theoryHtml: "<p><strong>Lid-magnit</strong> potensial mijozning so‘rovini olish evaziga beriladigan foydali bepul materialdir; <strong>ijtimoiy isbot</strong> esa ishonchni oshiradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> lid generatsiya, lid-magnit, ijtimoiy isbot, LTV.</div>", goal: "Lid generatsiya, ishonch va takroriy murojaat modelini tuzish.", deliverable: "Lid-magnit taklifi, e’tiroz javoblari va aloqa ssenariysi.", steps: ["Lid-magnit taklifini shakllantiring.", "Mijoz e’tiroziga javob shablonini yozing.", "Takroriy aloqa taklifini belgilang."], matching: [{ left: "Lid-magnit", right: "Foydali bepul material yoki konsultatsiya orqali mijoz so‘rovini olish" }, { left: "Ijtimoiy isbot", right: "Mijozlar sharhlari va real keyslar orqali ishonch uyg‘otish" }, { left: "LTV (Lifetime Value)", right: "Mijozning kompaniya bilan hamkorlik davomida keltiradigan umumiy qiymati" }], ordering: ["Auditoriya muammosini yechuvchi jozibali lid-magnit tayyorlash", "Ijtimoiy tarmoqlarda lid-magnit va ijtimoiy isbot postlarini chiqarish", "Kelib tushgan murojaatlarga tezkor javob berish va e’tirozlarni hal qilish", "Xarid qilgan mijozlar bilan qayta aloqa o‘rnatib takroriy taklif berish"] },
+        { id: "im_8", num: 8, title: "Ijtimoiy tarmoq marketingi (SMM) strategiyalarini ishlab chiqish.", summary: "Strategiya bosqichlari: maqsad, auditoriya, pozitsiyalash, kontent ustunlari, kanallar va KPI", theoryHtml: "<p><strong>SMM strategiya</strong> maqsad, auditoriya portreti, <strong>USP</strong>, kontent ustunlari va <strong>KPI</strong> ko‘rsatkichlarini birlashtiradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> SMM strategiya, USP, pozitsiyalash, kontent ustunlari, KPI.</div>", goal: "Tizimli SMM strategiya kartasini va KPI ko‘rsatkichlarini tuzish.", deliverable: "SMM strategiya kartasi.", steps: ["Asosiy maqsadni belgilang.", "USP va kontent ustunlarini yozing.", "3 ta KPI ko‘rsatkichini kiriting."], matching: [{ left: "USP", right: "Mahsulotning raqobatchilardan farqli va noyob savdo taklifi" }, { left: "Kontent ustunlari", right: "Ta’limiy, ishonch, sotuv va muloqot mavzularining muvozanati" }, { left: "KPI", right: "Strategiya maqsadlariga erishishni o‘lchaydigan aniq ko‘rsatkichlar" }], ordering: ["Biznes maqsadini va SMART marketing vazifalarini belgilash", "Maqsadli auditoriya portreti va USP ni shakllantirish", "Mos ijtimoiy platformalar va kontent ustunlarini tanlash", "Samaradorlikni baholash uchun aniq KPI ko‘rsatkichlarini tasdiqlash"] },
+        { id: "im_9", num: 9, title: "Internetda tovar va xizmatlarni reklama qilish usullarini tahlil qilish.", summary: "Targetli reklama, kontekst reklama, influencer, kontent-marketing va retargetingni solishtirish", theoryHtml: "<p><strong>Kontekst reklama</strong> tayyor talabni ushlaydi, <strong>targetli reklama</strong> auditoriya belgilari bo‘yicha ishlaydi, <strong>retargeting</strong> esa qaytgan auditoriyani jalb qiladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> kontekst reklama, targetli reklama, influencer, retargeting.</div>", goal: "Reklama usullarini solishtirish va mos kanalni asoslash.", deliverable: "Solishtirma tahlil jadvali va reklama matnlari.", steps: ["3 ta reklama usulini solishtiring.", "Mahsulotga mos usulni asoslang.", "2 ta reklama matni yozing."], matching: [{ left: "Kontekst reklama", right: "Foydalanuvchining qidiruv so‘roviga mos ravishda ko‘rinadigan reklama" }, { left: "Targetli reklama", right: "Ijtimoiy tarmoqlarda demografiya va qiziqish bo‘yicha sozlanadigan reklama" }, { left: "Retargeting", right: "Sayt yoki sahifaga kirib, harakatni yakunlamagan foydalanuvchini qaytarish" }], ordering: ["Reklama qilinayotgan tovar/xizmat xususiyati va narx segmentini aniqlash", "Kontekst, targetli, influencer va retargeting usullarini solishtirish", "Maqsadli auditoriyaga eng tez yetib boruvchi asosiy kanallarni tanlash", "Har bir tanlangan kanal uchun alohida reklama matni yozish"] },
+        { id: "im_10", num: 10, title: "Reklama platformalarida bannerlarni joylashtirish va media rejalashtirish.", summary: "Media-reja tuzish, format va o‘lchamlar, CPM/CPC/CTR hisob-kitoblari va joylashtirish jadvali", theoryHtml: "<p><strong>Media rejalashtirish</strong> maydonchalar, banner o‘lchamlari, muddat va byudjetni <strong>CPM, CPC, CTR</strong> ko‘rsatkichlari asosida hisoblashdir.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> media rejalashtirish, banner, CPM, CPC, CTR.</div>", goal: "Media-reja tuzish, banner konsepsiyasi va CPM/CPC hisobi.", deliverable: "Media-reja jadvali, banner g‘oyasi va hisob-kitob.", steps: ["Media-reja jadvalini tuzing.", "Banner matni va CTA yozing.", "Byudjet va CPM/CPC bo‘yicha hisoblang."], matching: [{ left: "CPM (Cost Per Mille)", right: "1000 ta reklama namoyishi uchun ketadigan xarajat" }, { left: "CPC (Cost Per Click)", right: "Banner yoki havolaga bitta bosish narxi" }, { left: "Media-reja", right: "Maydonchalar, muddatlar, formatlar va byudjet taqsimoti jadvali" }], ordering: ["Reklama maydonchalari va joylashtirish muddatlarini tanlash", "Har bir platforma uchun mos banner o‘lchamlari va vizualini tayyorlash", "Byudjet, CPM va CPC asosida taxminiy ko‘rish va bosishlarni hisoblash", "Media-reja jadvalini tasdiqlab, kampaniya davomida natijalarni solishtirish"] },
+        { id: "im_11", num: 11, title: "Ijtimoiy tarmoqlarda reklama kampaniyalarini tashkil etish.", summary: "Kampaniya ierarxiyasi, A/B test va byudjet nazorati", theoryHtml: "<p>Reklama kampaniyasi <strong>Campaign → Ad Set → Ad</strong> ierarxiyasida tuziladi va <strong>A/B test</strong> orqali optimallashtiriladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Campaign, Ad Set, Ad, A/B test, optimallashtirish.</div>", goal: "Kampaniya tuzilmasini va A/B test rejasini ishlab chiqish.", deliverable: "A/B test rejasi.", steps: ["Kampaniya maqsadi va auditoriyani belgilang.", "A va B variantlarni tuzing.", "G‘olib variantni aniqlash mezonini yozing."], matching: [{ left: "Campaign darajasi", right: "Reklama kampaniyasining umumiy maqsadini belgilaydi" }, { left: "Ad Set darajasi", right: "Maqsadli auditoriya, kunlik byudjet va jadvalni sozlaydi" }, { left: "A/B test", right: "Ikki variantni real auditoriyada solishtirib, samaralirog‘ini aniqlash" }], ordering: ["Kampaniya darajasida asosiy reklama maqsadini tanlash", "Ad Set darajasida auditoriya, hudud, byudjet va jadvalni sozlash", "Ad darajasida faqat bitta elementi farq qiluvchi A va B kreativlarni yaratish", "Sinov natijalariga ko‘ra byudjetni g‘olib variantga yo‘naltirish"] },
+        { id: "im_12", num: 12, title: "Ijtimoiy media marketing rejasini ishlab chiqish.", summary: "Haftalik/oylik kontent-reja, rubrikalar, nashr vaqtlari va resurslar taqsimoti", theoryHtml: "<p><strong>Kontent-reja</strong> mavzu, format, maqsad va nashr vaqtini tartibga soladi; <strong>batching</strong> esa kontentni oldindan guruhlab tayyorlash usulidir.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> kontent-reja, rubrika, nashr jadvali, batching.</div>", goal: "Haftalik kontent-reja tuzish va tayyorlash tartibini belgilash.", deliverable: "Haftalik kontent-reja jadvali.", steps: ["Mavzu, format va vaqtlarni belgilang.", "Har bir birlik maqsadini yozing.", "Oldindan tayyorlash kunlarini ajrating."], matching: [{ left: "Kontent-reja", right: "Sana, mavzu, format va maqsad ko‘rsatilgan nashrlar jadvali" }, { left: "Batching", right: "Bir necha kunlik post va videolarni oldindan guruhlab tayyorlash usuli" }, { left: "Nashr vaqti", right: "Maqsadli auditoriyaning tarmoqda eng faol bo‘lgan soatlari" }], ordering: ["Oylik strategiyaga mos asosiy kontent rubrikalarini belgilash", "Auditoriya faolligiga qarab haftalik nashr kunlari va soatlarini tanlash", "Har bir nashr birligi uchun mavzu, format va maqsadni jadvalga kiritish", "Kontentni oldindan (batching) tayyorlab, reja asosida e’lon qilish"] },
+        { id: "im_13", num: 13, title: "Internet auditoriyasini segmentatsiyalash va tahlil qilish.", summary: "Demografik, geografik, psixografik va xulq-atvor segmentlari; auditoriya ehtiyojlari", theoryHtml: "<p><strong>Segmentatsiya</strong> auditoriyani geografik, demografik, psixografik va xulq-atvor belgilari bo‘yicha guruhlashdir.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> segmentatsiya, demografik, geografik, psixografik, xulq-atvor.</div>", goal: "Auditoriyani segmentlarga ajratish va mos taklif tuzish.", deliverable: "Kamida 2 ta segment portreti va alohida takliflar.", steps: ["2 ta auditoriya segmentini tavsiflang.", "Ehtiyoj va og‘riqli nuqtalarni aniqlang.", "Har segmentga mos taklif yozing."], matching: [{ left: "Geografik segmentatsiya", right: "Foydalanuvchilarni shahar, hudud va til xususiyatiga ko‘ra ajratish" }, { left: "Psixografik segmentatsiya", right: "Qadriyatlar, qiziqishlar va turmush tarziga ko‘ra guruhlash" }, { left: "Xulq-atvor segmentatsiyasi", right: "Xarid odatlari va mahsulot bilan ishlash faolligiga ko‘ra ajratish" }], ordering: ["Umumiy auditoriyani aniqlash", "Demografik, geografik, psixografik va xulq-atvor belgilari bo‘yicha segmentlash", "Har bir segmentning asosiy muammosi (pain point) ni yozish", "Har bir segment uchun alohida moslashtirilgan taklif yaratish"] },
+        { id: "im_14", num: 14, title: "Mijozlar bilan munosabatlarni boshqarish texnologiyalaridan foydalanish.", summary: "CRM tizimlari, lidlarni qayta ishlash tezligi, avtomatik javoblar va mijoz bazasini yuritish", theoryHtml: "<p><strong>CRM</strong> mijozlar bazasi, murojaat bosqichlari va <strong>follow-up</strong> aloqalarini boshqarish texnologiyasidir.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> CRM, lid, tezkor javob, follow-up, mijoz bazasi.</div>", goal: "Murojaat bosqichlari, javob ssenariysi va CRM maydonlarini tuzish.", deliverable: "Murojaat voronkasi, javob/follow-up matnlari va CRM maydonlari.", steps: ["Murojaat bosqichlarini yozing.", "Javob va follow-up matnini tayyorlang.", "Mijoz bazasi maydonlarini belgilang."], matching: [{ left: "CRM tizimi", right: "Mijozlar bazasi, murojaat bosqichlari va muloqot tarixini boshqarish dasturi" }, { left: "Follow-up", right: "Dastlabki suhbatdan so‘ng qaror qabul qilmagan mijoz bilan qayta bog‘lanish" }, { left: "Lid manbai", right: "Mijoz aynan qaysi reklama kanali orqali kelganini ko‘rsatuvchi belgi" }], ordering: ["Kelgan murojaatni CRM bazasida ro‘yxatga olish", "Mijozga tezkor birlamchi javob berib, ehtiyojini aniqlash", "Mos taklif yuborish va zaruratda follow-up aloqa qilish", "Bitim holatini yangilab, mijoz bilan aloqani saqlab qolish"] },
+        { id: "im_15", num: 15, title: "Elektron biznes va elektron tijorat samaradorligini baholash.", summary: "Konversiya (CR), o‘rtacha chek (AOV), CAC, ROI/ROMI va savdo voronkasi metrikalari", theoryHtml: "<p>Asosiy ko‘rsatkichlar: <strong>CR</strong> (konversiya), <strong>AOV</strong> (o‘rtacha chek), <strong>CAC</strong> (mijoz jalb qilish xarajati) va <strong>ROMI</strong>.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> konversiya (CR), o‘rtacha chek (AOV), CAC, ROI/ROMI.</div>", goal: "E-commerce metrikalarini hisoblash va voronkani tahlil qilish.", deliverable: "Hisob-kitoblar, voronka tahlili va tavsiyalar.", steps: ["CR yoki AOV ni hisoblang.", "Voronkada yo‘qotish nuqtasini toping.", "2 ta yaxshilash taklifini yozing."], matching: [{ left: "CR (Conversion Rate)", right: "Umumiy tashrifchilardan xarid qilganlar foizi" }, { left: "AOV (Average Order Value)", right: "Umumiy tushumni buyurtmalar soniga bo‘lish orqali topiladigan o‘rtacha chek" }, { left: "CAC", right: "Bitta yangi xaridorni jalb qilish uchun sarflangan o‘rtacha reklama xarajati" }], ordering: ["Tashriflar, xaridlar, tushum va reklama xarajati ma’lumotlarini yig‘ish", "CR, AOV va CAC ko‘rsatkichlarini hisoblash", "Savdo voronkasida yo‘qotish nuqtasini aniqlash", "Cross-sell yoki retargeting orqali ko‘rsatkichlarni yaxshilash"] }
+      ],
+
+      win: [
+        { id: "win_1", num: 1, title: "Windows OTni o‘rnatish va dastlabki sozlash.", summary: "Virtual muhitda ISO orqali Windows o‘rnatish, diskni partition qilish, computer name, til/vaqt, Windows Update va drayverlar", theoryHtml: "<p>Virtual muhitda ISO orqali Windows OTni o‘rnatishda disk bo‘limlarini ajratish, kompyuter nomini belgilash, til/vaqt mintaqasini sozlash, <strong>Windows Update</strong> va drayverlar holatini tekshirish tizimni tayyorlaydi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> ISO, partition, computer name, Windows Update, drayverlar.</div>", goal: "ISO orqali Windows o‘rnatish, diskni bo‘limlash va dastlabki sozlash.", deliverable: "Sozlangan VM, computer name, til/vaqt va Update/drayver tekshiruvi.", steps: ["ISO orqali o‘rnating va diskni partition qiling.", "Computer name, til va vaqtni sozlang.", "Windows Update va drayverlarni tekshiring."], matching: [{ left: "ISO obraz", right: "Operatsion tizimni virtual mashinaga o‘rnatish uchun yuklanuvchi disk fayli" }, { left: "Partition", right: "Qattiq diskni mantiqiy bo‘limlarga (C:, D:) ajratish jarayoni" }, { left: "Windows Update", right: "Tizim xavfsizlik yamog‘lari va yangilanishlarini o‘rnatish xizmati" }], ordering: ["Virtual mashina yaratib ISO obrazni ulash", "Diskni partition qilish va Windows fayllarini o‘rnatish", "Computer name, til va vaqt mintaqasini sozlash", "Windows Update va Device Manager orqali drayverlarni tekshirish"] },
+        { id: "win_2", num: 2, title: "Foydalanuvchi, guruh va UACni boshqarish.", summary: "Local user/group yaratish, a’zolikni boshqarish, standart va administrator hisob, UAC darajalari (least privilege)", theoryHtml: "<p><strong>Least privilege</strong> tamoyiliga ko‘ra, lokal foydalanuvchi va guruhlar to‘g‘ri boshqariladi hamda <strong>UAC</strong> darajalari imtiyozli amallarni nazorat qiladigan qilib sozlanadi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> local user/group, UAC, least privilege, Administrator.</div>", goal: "Lokal user/group boshqaruvi va least privilege asosida UAC sozlash.", deliverable: "Local user/group, guruh a’zoligi va UAC tekshiruvi.", steps: ["Lokal user va group yarating.", "Standart va Administrator hisob farqini tekshiring.", "UAC darajasini least privilege ga moslang."], matching: [{ left: "Least Privilege", right: "Foydalanuvchiga faqat vazifasini bajarish uchun zarur minimal huquq berish" }, { left: "lusrmgr.msc", right: "Lokal foydalanuvchilar va guruhlarni boshqarish konsoli" }, { left: "UAC", right: "Imtiyozli tizim o‘zgarishlari oldidan tasdiqlash so‘rovchi himoya mexanizmi" }], ordering: ["lusrmgr.msc orqali lokal foydalanuvchi yaratish", "Lokal guruh yaratish va foydalanuvchini guruhga qo‘shish", "Standart va Administrator hisob imkoniyatlarini tekshirish", "UAC darajasini least privilege tamoyiliga moslab sozlash"] },
+        { id: "win_3", num: 3, title: "Disk va fayl tizimini boshqarish.", summary: "Disk Management yordamida partition/volume yaratish, NTFS formatlash, drive letter o‘zgartirish, folder structure", theoryHtml: "<p><strong>Disk Management</strong> orqali partition/volume yaratish, <strong>NTFS</strong> formatlash, drive letter o‘zgartirish va tartibli papka tuzilmasini yaratish mumkin.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Disk Management, partition/volume, NTFS, drive letter, folder structure.</div>", goal: "Disk Management orqali volume, NTFS formatlash, drive letter va papka tuzilmasi.", deliverable: "NTFS volume, o‘zgartirilgan drive letter va folder structure.", steps: ["Partition/volume yaratib NTFS formatlang.", "Drive letter ni o‘zgartiring.", "Folder structure yarating."], matching: [{ left: "diskmgmt.msc", right: "Disk bo‘limlari va tomlarini grafik boshqarish konsoli" }, { left: "NTFS", right: "Fayl ruxsatlari va shifrlashni qo‘llab-quvvatlovchi Windows fayl tizimi" }, { left: "Drive Letter", right: "Mantiqiy tomga biriktiriladigan disk harfi (masalan, D:)" }], ordering: ["Disk Management (diskmgmt.msc) oynasini ochish", "New Simple Volume orqali hajm va Drive Letter belgilash", "Tomni NTFS fayl tizimida formatlash", "Yangi diskda tartibli folder structure yaratish"] },
+        { id: "win_4", num: 4, title: "NTFS ruxsatlarini o‘rnatish.", summary: "Papka strukturasi (masalan, D:\University), Read/Write/Modify/Full Control/Deny, inheritance va ownership", theoryHtml: "<p><strong>NTFS ruxsatlari</strong> (Read, Write, Modify, Full Control, Deny) kirishni boshqaradi; <strong>inheritance</strong> ruxsatlarni uzatadi, <strong>ownership</strong> esa egalik huquqini belgilaydi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> NTFS permissions, Read/Write/Modify/Full Control/Deny, inheritance, ownership.</div>", goal: "Papka ierarxiyasida NTFS ruxsatlari, inheritance va ownership bilan ishlash.", deliverable: "<code>D:\University</code> tuzilmasi va ruxsat/inheritance/ownership tekshiruvi.", steps: ["<code>D:\University</code> papka strukturasini yarating.", "Read/Write/Modify/Full Control/Deny ni sinang.", "Inheritance va ownership ni tekshiring."], matching: [{ left: "Modify ruxsati", right: "Faylni o‘qish, yozish, o‘zgartirish va o‘chirish imkonini beradi" }, { left: "Deny qoidasi", right: "Allow ruxsatlaridan ustun turib, ko‘rsatilgan amalni taqiqlaydi" }, { left: "Inheritance", right: "Ota papka ruxsatlarining ichki papka va fayllarga avtomatik o‘tishi" }], ordering: ["D:\University asosiy papkasi va ichki papkalarni yaratish", "Security bo‘limidan foydalanuvchi va guruhlarni qo‘shish", "Read, Write, Modify, Full Control va Deny ruxsatlarini tayinlash", "Inheritance va Ownership holatini tekshirish"] },
+        { id: "win_5", num: 5, title: "Windows xizmatlari va jarayonlarini boshqarish.", summary: "Task Manager va Services orqali process/PID topish, xizmatni to‘xtatish/ishga tushirish, startup turi, dependency", theoryHtml: "<p><strong>Task Manager</strong> jarayonlar va <strong>PID</strong> ni ko‘rsatadi; <strong>Services</strong> xizmat holati, startup turi va <strong>dependency</strong> ni boshqaradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Task Manager, Services, process/PID, startup turi, dependency.</div>", goal: "Process/PID va xizmatlarni topish, boshqarish hamda bog‘liqliklarni ko‘rish.", deliverable: "PID/xizmat ro‘yxati, startup turi va dependency tahlili.", steps: ["Task Manager va Services orqali process/PID toping.", "Xizmatni to‘xtatish/ishga tushirish va startup turini ko‘ring.", "Dependency bog‘liqliklarini tekshiring."], matching: [{ left: "PID (Process ID)", right: "Tizimdagi har bir ishlayotgan jarayonga beriladigan noyob raqam" }, { left: "services.msc", right: "Windows fon xizmatlari va ularning startup turini boshqarish konsoli" }, { left: "Dependencies", right: "Xizmat ishlashi uchun zarur bo‘lgan boshqa xizmatlar ro‘yxati" }], ordering: ["Task Manager orqali jarayon nomi va PID raqamini topish", "Services (services.msc) oynasida tegishli xizmatni ochish", "Xizmat holati va Startup Type parametrini tekshirish", "Dependencies bo‘limidan bog‘liq xizmatlarni tahlil qilish"] },
+        { id: "win_6", num: 6, title: "Qurilmalar va drayverlarni boshqarish.", summary: "Device Manager yordamida drayver holatini tekshirish, yangilash/rollback, unknown device va error code", theoryHtml: "<p><strong>Device Manager</strong> qurilmalar holati va xato kodlarini ko‘rsatadi; muammo chiqsa <strong>rollback</strong> yoki mos drayver o‘rnatish qo‘llaniladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Device Manager, drayver, rollback, unknown device, error code.</div>", goal: "Device Manager da drayver holati, rollback/yangilash va error code tahlili.", deliverable: "Drayver holati, rollback/yangilash va error code izohi.", steps: ["Device Manager da drayver holatini tekshiring.", "Yangilash/rollback ni ko‘ring.", "Unknown device va error code ni tahlil qiling."], matching: [{ left: "Roll Back Driver", right: "Yangilangan drayver muammo bersa, oldingi versiyaga qaytarish amali" }, { left: "Unknown Device", right: "Mos drayveri o‘rnatilmagani sababli tanilmagan apparat qurilmasi" }, { left: "devmgmt.msc", right: "Qurilmalar va drayverlarni boshqarish konsoli" }], ordering: ["Device Manager (devmgmt.msc) oynasini ochish", "Tekshirilayotgan qurilmaning Properties oynasini ochish", "Device status va error code ni tekshirish", "Drayverni yangilash (Update) yoki oldingi holatga qaytarish (Rollback)"] },
+        { id: "win_7", num: 7, title: "Windows Registry bilan ishlash.", summary: "Registry Editor orqali key/value yaratish, xavfsiz konfiguratsiya o‘zgartirish, backup/restore", theoryHtml: "<p><strong>Windows Registry</strong> konfiguratsiya parametrlarini saqlaydi. O‘zgartirishdan avval <strong>backup (Export)</strong>, xatoda esa <strong>restore (Import)</strong> zarur.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Registry Editor, <code>regedit</code>, key/value, backup/restore.</div>", goal: "Registry Editor orqali key/value yaratish, zaxiralash va tiklashni bajarish.", deliverable: "Backup fayl, o‘quv key/value va restore tekshiruvi.", steps: ["<code>regedit</code> da backup (Export) oling.", "Key/value yaratib, o‘zgarishni tekshiring.", "Backup orqali restore ni sinang."], matching: [{ left: "HKCU (HKEY_CURRENT_USER)", right: "Joriy tizimga kirgan foydalanuvchiga tegishli sozlamalar bo‘limi" }, { left: "Export (.reg)", right: "O‘zgarish kiritishdan oldin Registry bo‘limidan zaxira nusxa olish" }, { left: "REG_DWORD", right: "32-bitli butun son ko‘rinishidagi Registry parametr turi" }], ordering: ["Registry Editor (regedit) dasturini ochish", "File -> Export orqali zaxira nusxa saqlash", "Yangi kalit (Key) va qiymat (Value) yaratish", "O‘zgarishni tekshirish va zaxira fayl (Import) orqali tiklashni sinash"] },
+        { id: "win_8", num: 8, title: "Windows tarmoq parametrlarini sozlash va diagnostika qilish.", summary: "IPv4/IPv6, DNS, gateway, adapter va static IP sozlash; ipconfig, ping, tracert, nslookup, netstat", theoryHtml: "<p>Tarmoqda <strong>IPv4/IPv6</strong>, DNS, gateway va static IP sozlanadi; diagnostika uchun <code>ipconfig</code>, <code>ping</code>, <code>tracert</code>, <code>nslookup</code>, <code>netstat</code> ishlatiladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> IPv4/IPv6, DNS, gateway, static IP, <code>ipconfig</code>, <code>ping</code>, <code>tracert</code>, <code>nslookup</code>, <code>netstat</code>.</div>", goal: "Tarmoq parametrlarini sozlash va buyruqlar bilan diagnostika qilish.", deliverable: "Tarmoq sozlamasi va buyruqlar natijalari.", steps: ["IPv4/IPv6, DNS, gateway yoki static IP ni sozlang.", "<code>ipconfig</code> va <code>ping</code> bilan tekshiring.", "<code>tracert</code>, <code>nslookup</code> va <code>netstat</code> ni bajaring."], matching: [{ left: "ipconfig /all", right: "Adapter IP manzili, subnet mask, gateway va DNS sozlamalarini ko‘rsatadi" }, { left: "tracert", right: "Paketlarning manzilgacha o‘tadigan barcha marshrut tugunlarini ko‘rsatadi" }, { left: "nslookup", right: "Domen nomining DNS server orqali qaysi IP manzilga mos kelishini tekshiradi" }], ordering: ["Tarmoq adapteri sozlamalarida IPv4/IPv6, Gateway va DNS ni tekshirish", "ipconfig /all buyrug‘i orqali joriy tarmoq parametrlarini ko‘rish", "ping va tracert buyruqlari bilan aloqani sinash", "nslookup va netstat yordamida DNS hamda faol portlarni tekshirish"] },
+        { id: "win_9", num: 9, title: "Windows Defender Firewall qoidalarini boshqarish.", summary: "Firewall profillarini tekshirish, inbound/outbound rule yaratish, port ochish/bloklash, dastur qoidalari", theoryHtml: "<p><strong>Windows Defender Firewall</strong> profillar bo‘yicha <strong>inbound</strong> va <strong>outbound</strong> trafikni boshqaradi; port va dastur qoidalari yaratiladi hamda sinab ko‘riladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Firewall profillari, inbound/outbound rule, port/dastur qoidasi.</div>", goal: "Firewall profillarini tekshirish, inbound/outbound qoida yaratish va port/dastur qoidalarini sinash.", deliverable: "Profil holati, qoidalar va sinov natijasi.", steps: ["Firewall profillarini tekshiring.", "Inbound/outbound qoida yarating.", "Port yoki dastur qoidasini sinang."], matching: [{ left: "Inbound Rule", right: "Tashqi tarmoqdan kompyuterga kiruvchi trafikni ruxsat etadi yoki bloklaydi" }, { left: "Outbound Rule", right: "Kompyuterdagi dasturlarning tashqi tarmoqqa chiqishini boshqaradi" }, { left: "Public profili", right: "Ishonchsiz jamoat tarmoqlarida qo‘llaniladigan qat’iy himoya profili" }], ordering: ["Windows Defender Firewall (wf.msc) oynasini ochish", "Domain, Private va Public profillarining faol holatini tekshirish", "Inbound yoki Outbound Rules bo‘limida yangi qoida yaratish", "Yaratilgan qoidani amalda sinab, keraksiz test qoidani tartibga keltirish"] },
+        { id: "win_10", num: 10, title: "Windows Security konfiguratsiyasi.", summary: "Defender va SmartScreen sozlash, BitLocker/Device Encryption, Secure Boot holati, xavfsizlik monitoringi", theoryHtml: "<p><strong>Windows Security</strong> Defender, <strong>SmartScreen</strong>, <strong>BitLocker / Device Encryption</strong>, <strong>Secure Boot</strong> va xavfsizlik monitoringini birlashtiradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Defender, SmartScreen, BitLocker/Device Encryption, Secure Boot, monitoring.</div>", goal: "Windows Security sozlamalari, shifrlash, Secure Boot va monitoringni tekshirish.", deliverable: "Defender/SmartScreen, BitLocker/Encryption va Secure Boot tekshiruvi.", steps: ["Defender va SmartScreen sozlamalarini tekshiring.", "BitLocker/Device Encryption va Secure Boot holatini ko‘ring.", "Xavfsizlik monitoringini tahlil qiling."], matching: [{ left: "BitLocker", right: "Diskdagi ma’lumotlarni shifrlab, ruxsatsiz jismoniy kirishdan himoyalaydi" }, { left: "SmartScreen", right: "Shubhali yuklamalar, noma’lum ilovalar va phishing saytlardan ogohlantiradi" }, { left: "Secure Boot", right: "Kompyuter yuklanishida faqat ishonchli imzolangan tizim yuklanishini tekshiradi" }], ordering: ["Windows Security da Defender real-time himoyasini tekshirish", "SmartScreen himoya darajasini ko‘rish", "msinfo32 va manage-bde -status orqali Secure Boot hamda shifrlashni tekshirish", "Xavfsizlik monitoringi ogohlantirishlarini tahlil qilish"] },
+        { id: "win_11", num: 11, title: "PowerShell asoslari.", summary: "Get-Help, Get-Command, Get-Process, Get-Service, Get-ComputerInfo, Get-ChildItem, Get-Content va pipeline", theoryHtml: "<p><strong>PowerShell</strong> da <code>Get-Help</code>, <code>Get-Command</code>, <code>Get-Process</code>, <code>Get-Service</code>, <code>Get-ComputerInfo</code>, <code>Get-ChildItem</code>, <code>Get-Content</code> va <strong>pipeline (<code>|</code>)</strong> qo‘llaniladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> PowerShell, Get-* cmdlet’lar, pipeline (<code>|</code>).</div>", goal: "Asosiy PowerShell buyruqlarini bajarish va pipeline bilan ishlash.", deliverable: "Bajarilgan cmdlet’lar va pipeline natijalari.", steps: ["<code>Get-Help</code> va <code>Get-Command</code> ni sinang.", "Asosiy Get-* cmdlet’larni bajaring.", "Pipeline (<code>|</code>) bilan natijalarni qayta ishlang."], matching: [{ left: "Pipeline ( | )", right: "Bir cmdlet chiqargan obyektlarni keyingi cmdlet kirishiga uzatadi" }, { left: "Get-ChildItem", right: "Papka ichidagi fayl va quyi papkalar ro‘yxatini chiqaradi" }, { left: "Get-Content", right: "Matnli faylning ichki mazmunini o‘qib ko‘rsatadi" }], ordering: ["PowerShell konsolini ochib Get-Command va Get-Help ni sinash", "Get-ComputerInfo, Get-Process va Get-Service buyruqlarini bajarish", "Get-ChildItem va Get-Content yordamida papka va fayl ma’lumotlarini o‘qish", "Pipeline (|) va Where-Object orqali natijalarni saralab chiqarish"] },
+        { id: "win_12", num: 12, title: "PowerShell orqali administrativ vazifalarni bajarish.", summary: "PowerShell orqali user/group/folder yaratish, permission berish, service/process boshqarish, IP konfiguratsiyasi", theoryHtml: "<p>PowerShell orqali user/group/folder yaratish, permission berish, service/process boshqarish va IP konfiguratsiyasini ko‘rish mumkin.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> user/group/folder, permission, service/process, IP konfiguratsiya.</div>", goal: "PowerShell orqali administrativ vazifalarni bajarish.", deliverable: "Bajarilgan PowerShell vazifalari va natijalari.", steps: ["User/group/folder va permission buyruqlarini sinang.", "Service/process boshqaruvini bajaring.", "IP konfiguratsiyasini ko‘ring."], matching: [{ left: "New-Item", right: "PowerShell da yangi papka yoki fayl yaratish buyrug‘i" }, { left: "Get-NetIPConfiguration", right: "Tarmoq interfeyslari, IP manzil, Gateway va DNS ni ko‘rsatadi" }, { left: "Get-Acl / Set-Acl", right: "Fayl va papkalarning NTFS ruxsatlarini ko‘rish va o‘zgartirish" }], ordering: ["PowerShell konsolini Administrator huquqi bilan ochish", "New-Item va New-LocalUser/New-LocalGroup buyruqlarini bajarish", "Get-Service / Get-Process orqali xizmat va jarayonlarni boshqarish", "Get-NetIPConfiguration va Get-Acl yordamida natijalarni tasdiqlash"] },
+        { id: "win_13", num: 13, title: "Event Viewer va tizim monitoringi.", summary: "Application, Security, System loglarini tahlil qilish, Event ID bo‘yicha error/warning topish, log filtering", theoryHtml: "<p><strong>Event Viewer</strong> da Application, Security, System loglari tahlil qilinadi, <strong>Event ID</strong> bo‘yicha error/warning topiladi va <strong>filtering</strong> qo‘llaniladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Event Viewer, Application/Security/System, Event ID, error/warning, filtering.</div>", goal: "Loglarni tahlil qilish, Event ID bo‘yicha error/warning topish va filtrlash.", deliverable: "Topilgan Error/Warning yozuvlari va filtrlangan log natijasi.", steps: ["Application, Security, System loglarini tahlil qiling.", "Event ID bo‘yicha error/warning toping.", "Log filtering bajaring."], matching: [{ left: "Security jurnali", right: "Tizimga kirish urinishlari va xavfsizlik auditlarini qayd etadi" }, { left: "Event ID", right: "Har bir hodisa turini aniq identifikatsiya qiluvchi raqamli kod" }, { left: "Filter Current Log", right: "Jurnal yozuvlarini Error, Warning yoki Event ID bo‘yicha saralash" }], ordering: ["Event Viewer (eventvwr.msc) konsolini ochish", "Application, Security va System jurnallaridagi yozuvlarni ko‘rish", "Filter Current Log orqali Error va Warning darajalarini ajratish", "Topilgan hodisaning Event ID raqami asosida sababini aniqlash"] },
+        { id: "win_14", num: 14, title: "Windows troubleshooting va recovery.", summary: "Sun’iy yaratilgan muammolarni (tarmoq, service, drayver, ilova, startup) Event Viewer, Task Manager, Device Manager, Safe Mode orqali aniqlash", theoryHtml: "<p>Muammolar <strong>Event Viewer</strong>, <strong>Task Manager</strong>, <strong>Device Manager</strong> va <strong>Safe Mode</strong> orqali aniqlanib bartaraf etiladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> troubleshooting, recovery, Event Viewer, Task/Device Manager, Safe Mode.</div>", goal: "Muammolarni aniqlash va tiklash vositalarini qo‘llash.", deliverable: "Aniqlangan muammo sababi va bartaraf etish natijasi.", steps: ["Muammo turini aniqlang.", "Event Viewer, Task/Device Manager, Safe Mode dan foydalaning.", "Yechimni tekshiring."], matching: [{ left: "Safe Mode", right: "Minimal drayver va xizmatlar bilan yuklanib muammo manbasini aniqlash rejimi" }, { left: "Task Manager -> Startup", right: "Tizim yuklanishini sekinlashtiruvchi avto-yuklanish dasturlarini boshqarish" }, { left: "Tizimli diagnostika", right: "Simptomni kuzatib, loglar orqali sababni topish va yechimni sinash" }], ordering: ["Nosozlik simptomini aniq qayd etish", "Event Viewer, Task Manager va Device Manager orqali xato manbasini topish", "Zaruratda Safe Mode da muammoni izolyatsiya qilish", "Tuzatishni qo‘llab, tizimning normal ishlashini tasdiqlash"] },
+        { id: "win_15", num: 15, title: "Yakuniy kompleks Windows administratorlik laboratoriyasi.", summary: "O‘rnatishdan boshlab foydalanuvchi/guruh, NTFS, tarmoq, firewall, xavfsizlik, PowerShell, monitoring va troubleshooting bosqichlarini mustaqil bajarish", theoryHtml: "<p>Yakuniy kompleks laboratoriya barcha bosqichlarni — o‘rnatish, hisob/guruh, NTFS, tarmoq, firewall, xavfsizlik, PowerShell, monitoring va troubleshooting ni birlashtiradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> kompleks laboratoriya, xavfsizlik, monitoring, troubleshooting.</div>", goal: "Kompleks administratorlik laboratoriyasini mustaqil bajarish.", deliverable: "Yakuniy nazorat ro‘yxati va holat hisoboti.", steps: ["O‘rnatish, hisob/guruh va NTFS sozlamalarini bajaring.", "Tarmoq, firewall va xavfsizlikni tekshiring.", "PowerShell, monitoring va troubleshooting ni yakunlang."], matching: [{ left: "1-bosqich: Hisob va NTFS", right: "Foydalanuvchi/guruh yaratish, UAC va papka ruxsatlarini sozlash" }, { left: "2-bosqich: Tarmoq va Firewall", right: "IP/DNS konfiguratsiyasi hamda Inbound/Outbound qoidalarni tekshirish" }, { left: "3-bosqich: Monitoring", right: "PowerShell va Event Viewer orqali xatoliklar yo‘qligini tasdiqlash" }], ordering: ["Tizimning dastlabki sozlamalari, foydalanuvchi/guruh va NTFS ruxsatlarini sozlash", "Tarmoq parametrlari, Firewall qoidalari va Windows Security himoyasini tekshirish", "PowerShell buyruqlari yordamida konfiguratsiya holatini tekshirish", "Event Viewer loglarini ko‘rib chiqib yakuniy hisobot topshirish"] }
+      ],
+
+      egov: [
+        { id: "egov_1", num: 1, title: "Elektron hukumatning tashkiliy huquqiy asoslari", summary: "Elektron hukumat to‘g‘risidagi qonunchilik, normativ-huquqiy baza va institutsional tuzilma", theoryHtml: "<p><strong>Elektron hukumat</strong> — davlat organlarining jismoniy va yuridik shaxslarga AKTni qo‘llash yo‘li bilan davlat xizmatlari ko‘rsatishga doir faoliyati hamda idoralararo elektron hamkorlikni ta’minlash tizimidir.</p><ul class='theory-bullets'><li><strong>Huquqiy asoslar:</strong> “Elektron hukumat to‘g‘risida”gi Qonun, “Elektron raqamli imzo to‘g‘risida”gi Qonun, “Shaxsga doir ma’lumotlar to‘g‘risida”gi Qonun.</li><li><strong>Asosiy tamoyillar:</strong> ochiqlik va shaffoflik, “bir darcha” tamoyili, hujjatlarni unifikatsiya qilish va axborot xavfsizligi.</li></ul><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Elektron hukumat to‘g‘risidagi qonun, “bir darcha” tamoyili, OneID, idoralararo hamkorlik.</div>", goal: "Elektron hukumatning tashkiliy-huquqiy asoslari va tamoyillarini tahlil qilish.", deliverable: "Normativ-huquqiy hujjatlar tahlili jadvali.", steps: ["Qonunning asosiy tushunchalarini o‘rganing.", "Davlat organlarining vakolatlarini ajrating.", "“Bir darcha” tamoyili ustunliklarini yozing."], matching: [{ left: "“Bir darcha” tamoyili", right: "Fuqarolardan idoralararo ma’lumotlarni talab qilmasdan yagona nuqtadan xizmat ko‘rsatish" }, { left: "OneID", right: "Davlat axborot tizimlariga kirishda shaxsni yagona identifikatsiya qilish tizimi" }, { left: "Idoralararo hamkorlik", right: "Davlat organlari bazalarining o‘zaro avtomatik axborot almashinuvi" }], ordering: ["Elektron hukumatga oid qonun va normativ hujjatlarni o‘rganish", "Asosiy tamoyillar va ishtirokchi subyektlarni aniqlash", "Vakolatli organ va idoralarning vazifalarini tahlil qilish", "Huquqiy asoslarning amaliy ahamiyati bo‘yicha xulosa yozish"] },
+        { id: "egov_2", num: 2, title: "Elektron hukumat tahlili va joriy etish", summary: "Elektron hukumatni joriy etish bosqichlari, BPR (jarayonlarni qayta loyihalash) va samaradorlik tahlili", theoryHtml: "<p><strong>Elektron hukumatni joriy etish</strong> jarayonlarni qayta loyihalash (<strong>BPR</strong>) va bosqichma-bosqich raqamlashtirishga asoslanadi.</p><ul class='theory-bullets'><li><strong>5 bosqich:</strong> Axborot berish → Bir tomonlama → Ikki tomonlama interaktiv → Tranzaksion → Integratsiyalashgan proaktiv xizmatlar.</li></ul><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> BPR, AS-IS / TO-BE tahlil, tranzaksion xizmat, proaktiv xizmat.</div>", goal: "Joriy etish bosqichlarini tahlil qilish va xizmat jarayonini raqamlashtirish modelini tuzish.", deliverable: "AS-IS va TO-BE tahlili.", steps: ["5 ta bosqichni misollar bilan tavsiflang.", "Tanlangan xizmat uchun AS-IS va TO-BE jarayonni solishtiring.", "Joriy etish to‘siqlari va yechimlarini yozing."], matching: [{ left: "BPR", right: "Raqamlashtirishdan oldin ortiqcha byurokratik bosqichlarni qisqartirish" }, { left: "Tranzaksion bosqich", right: "Ariza, to‘lov va yakuniy hujjatni to‘liq onlayn olish bosqichi" }, { left: "Proaktiv xizmat", right: "Hayotiy vaziyatga qarab avtomatik taklif etiladigan xizmat" }], ordering: ["Mavjud xizmat jarayonini (AS-IS) tahlil qilish", "Ortiqcha bosqichlarni qisqartirish (BPR)", "Idoralararo integratsiya asosida TO-BE modelni loyihalash", "Vaqt va resurs tejamkorligini baholash"] },
+        { id: "egov_3", num: 3, title: "Elektron hukumatda o‘zaro munosabat turlari asosidagi axborot tizimlari", summary: "G2C, G2B, G2G, G2E munosabat modellari va ularga xizmat qiluvchi axborot tizimlari", theoryHtml: "<p>Elektron hukumat axborot tizimlari <strong>G2C</strong> (davlat-fuqaro), <strong>G2B</strong> (davlat-biznes), <strong>G2G</strong> (davlat-davlat) va <strong>G2E</strong> (davlat-xodim) modellariga asoslanadi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> G2C, G2B, G2G, G2E, davlat axborot tizimlari.</div>", goal: "G2C, G2B, G2G va G2E modellarini farqlash va tizimlarni tahlil qilish.", deliverable: "4 ta model bo‘yicha jadval.", steps: ["4 ta model maqsadini yozing.", "Har bir modelga kamida 2 ta tizim misolini keltiring.", "Ma’lumot almashinuvi bog‘liqligini tushuntiring."], matching: [{ left: "G2C modeli", right: "Davlat organlarining fuqarolarga ko‘rsatadigan interaktiv xizmatlari" }, { left: "G2B modeli", right: "Tadbirkorlar uchun soliq, litsenziya va davlat xaridlari tizimlari" }, { left: "G2G modeli", right: "Davlat idoralari o‘rtasidagi ichki ma’lumot almashinuvi" }], ordering: ["Ishtirokchi subyektlarni aniqlash", "G2C, G2B, G2G va G2E modellarini tasniflash", "Amaldagi davlat axborot tizimlarini tahlil qilish", "Modellararo integratsiya samarasini asoslash"] },
+        { id: "egov_4", num: 4, title: "Davlat interaktiv xizmatlaridan amaliyotda foydalanish", summary: "Interaktiv xizmatlar reestri, ariza topshirish tartibi, status kuzatuvi va QR-kodli natija olish", theoryHtml: "<p><strong>Davlat interaktiv xizmatlari</strong> masofadan ariza yuborish, statusni kuzatish va <strong>QR-kodli elektron hujjat</strong> olish imkonini beradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> interaktiv xizmat, xizmat reglamenti, ariza statusi, QR-kodli hujjat.</div>", goal: "Interaktiv xizmatlardan foydalanish ketma-ketligi va reglamentini o‘rganish.", deliverable: "Tanlangan xizmat reglamenti tahlili.", steps: ["2 ta interaktiv xizmat reglamentini o‘rganing.", "Ariza yuborish bosqichlarini yozing.", "QR-kod tekshiruvini tushuntiring."], matching: [{ left: "Xizmat reglamenti", right: "Xizmat muddati, narxi va talab etiladigan ma’lumotlar qoidasi" }, { left: "QR-kodli elektron hujjat", right: "Haqiqiyligini onlayn tekshirish mumkin bo‘lgan yuridik kuchga ega hujjat" }, { left: "Ariza statusi", right: "Murojaatning ko‘rib chiqilish bosqichini real vaqtda ko‘rsatish" }], ordering: ["OneID orqali shaxsni tasdiqlab katalogga kirish", "Xizmat reglamentini ko‘rib chiqish", "Elektron arizani to‘ldirish va yuborish", "Shaxsiy kabinetda QR-kodli elektron natijani yuklab olish"] },
+        { id: "egov_5", num: 5, title: "Elektron hukumat tizimida axborot oqimi logistikasini ta’minlash usullari", summary: "Idoralararo integratsiya platformasi, Once-Only tamoyili, API va JSHSHIR/STIR", theoryHtml: "<p><strong>Axborot oqimi logistikasi</strong> “<strong>Once-Only</strong>” tamoyili, <strong>Integratsiya platformasi (ESB)</strong> va <strong>JSHSHIR/STIR</strong> identifikatorlari orqali ma’lumot almashinuvini ta’minlaydi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> axborot logistikasi, Once-Only, API, JSHSHIR, STIR.</div>", goal: "Idoralararo axborot oqimi logistikasini tahlil qilish.", deliverable: "Ma’lumotlar harakati sxemasi.", steps: ["JSHSHIR va STIR rolini tushuntiring.", "3 ta idora o‘rtasidagi axborot oqimi sxemasini chizing.", "Uzilishlarning oldini olish usullarini yozing."], matching: [{ left: "Once-Only tamoyili", right: "Bir marta olingan ma’lumotni boshqa idoralar qayta talab qilmasligi" }, { left: "Integratsiya platformasi", right: "Davlat ma’lumotlar bazalarini yagona API orqali bog‘lovchi shina" }, { left: "JSHSHIR / STIR", right: "Jismoniy va yuridik shaxslar ma’lumotlarini bog‘lovchi yagona kalit" }], ordering: ["Birlamchi ma’lumot manbalari va JSHSHIR/STIR ni belgilash", "Integratsiya platformasi orqali API formatlarini moslash", "Ma’lumotlarni shifrlangan kanallar orqali marshrutlash", "Axborot oqimi tezligi va xatoliklarini monitoring qilish"] },
+        { id: "egov_6", num: 6, title: "Innovatsion texnologiyalarni tadbiq etishda Elektron hukumat tizimi", summary: "Sun’iy intellekt (AI), Big Data, bulutli texnologiyalar (G-Cloud) va Blockchain", theoryHtml: "<p>Elektron hukumatda <strong>AI</strong>, <strong>Big Data</strong>, <strong>G-Cloud</strong> va <strong>Blockchain</strong> xizmatlarni avtomatlashtirish va shaffoflikni oshirishda qo‘llaniladi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> AI, Big Data, G-Cloud, Blockchain.</div>", goal: "Innovatsion texnologiyalarni davlat xizmatlarida qo‘llashni o‘rganish.", deliverable: "Innovatsion loyiha taklifi.", steps: ["4 ta texnologiya qo‘llanilishini jadvalga soling.", "AI yoki Big Data qo‘llash ssenariysini tuzing.", "Texnik va huquqiy talablarni yozing."], matching: [{ left: "G-Cloud", right: "Davlat axborot tizimlari uchun markazlashgan bulutli infratuzilma" }, { left: "Big Data tahlili", right: "Katta hajmdagi ma’lumotlar asosida boshqaruv qarorlarini bashoratlash" }, { left: "AI Chat-bot", right: "Fuqarolar savollariga 24/7 rejimida avtomatik javob berish" }], ordering: ["Mavjud jarayondagi muammoni aniqlash", "Mos innovatsion texnologiyani tanlash", "Pilot loyiha doirasida xavfsizlik talablarini sozlash", "Natijadorlikni baholab keng joriy etish"] },
+        { id: "egov_7", num: 7, title: "Elektron to‘lov texnologiyalari va tizimlarining asosiy tushunchalari", summary: "Elektron to‘lov tizimlari, to‘lov shlyuzlari, Yagona billing tizimi va 3D-Secure", theoryHtml: "<p><strong>Elektron to‘lov tizimlari</strong> to‘lov shlyuzlari, protsessing markazlari, <strong>Yagona billing tizimi</strong> va <strong>3D-Secure</strong> orqali davlat to‘lovlarini onlayn amalga oshiradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> elektron to‘lov, to‘lov shlyuzi, billing tizimi, 3D-Secure.</div>", goal: "Elektron to‘lov arxitekturasi va billing integratsiyasini tahlil qilish.", deliverable: "Tranzaksiya zanjiri va xavfsizlik sharhi.", steps: ["Billing va to‘lov shlyuzi aloqasini tasvirlang.", "3D-Secure rolini yozing.", "To‘lovdan keyin status yangilanishini tushuntiring."], matching: [{ left: "Yagona billing tizimi", right: "Davlat bojlari va to‘lovlarini hisoblash hamda tasdiqlash tizimi" }, { left: "3D-Secure", right: "Onlayn to‘lovlarda qo‘shimcha bir martalik kod orqali himoya" }, { left: "To‘lov shlyuzi", right: "Veb-portal va bank tizimi o‘rtasida shifrlangan ma’lumot uzatuvchi vosita" }], ordering: ["Davlat xizmati uchun invoys generatsiya qilish", "Elektron to‘lov vositasi va 3D-Secure tasdiqlashni bajarish", "To‘lov shlyuzi va protsessing orqali mablag‘ni o‘tkazish", "Billing tizimiga tasdiq yuborib elektron chekni ochish"] },
+        { id: "egov_8", num: 8, title: "Rivojlanish uchun ijtimoiy media", summary: "Davlat organlarining ijtimoiy tarmoqlardagi ochiqligi, raqamli PR va qayta aloqa", theoryHtml: "<p><strong>Rivojlanish uchun ijtimoiy media</strong> davlat organlarining rasmiy kanallar orqali aholiga tezkor axborot yetkazishi va qayta aloqa o‘rnatishidir.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> raqamli PR, rasmiy kanal, infografika, qayta aloqa.</div>", goal: "Davlat tashkilotining ijtimoiy tarmoqlardagi kommunikatsiyasini tahlil qilish.", deliverable: "Rasmiy sahifa tahlili va axborot posti maketi.", steps: ["2 ta davlat sahifasini tahlil qiling.", "Interaktiv xizmatni tushuntiruvchi infografika matnini tuzing.", "Murojaatlarga javob reglamentini belgilang."], matching: [{ left: "Infografika", right: "Murakkab xizmat tartibini vizual va sodda ko‘rinishda tushuntirish" }, { left: "Verifikatsiyalangan kanal", right: "Davlat organining rasmiy axborot manbai ekanini tasdiqlovchi belgi" }, { left: "Jamoatchilik so‘rovnomasi", right: "Qaror qabul qilishda fuqarolar fikrini yig‘ish vositasi" }], ordering: ["Aholi uchun dolzarb xizmat mavzusini tanlash", "Ma’lumotni sodda va vizual formatga o‘tkazish", "Rasmiy kanallarda e’lon qilish va savol-javob ochish", "Fuqarolar fikrlarini tahlil qilib xizmat sifatini yaxshilash"] },
+        { id: "egov_9", num: 9, title: "Elektron hukumat tizimi tarmoqlarida axborotlarning xavfsizligi va konfidensialligini ta’minlash", summary: "Kiberxavfsizlik choralari, CIA uchligi, kriptografik shifrlash va RBAC", theoryHtml: "<p>Elektron hukumat tarmoqlarida <strong>CIA uchligi</strong> (Konfidensiallik, Yaxlitlik, Foydalanuvchanlik), shifrlash (TLS/VPN) va <strong>RBAC</strong> qat’iy ta’minlanadi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> CIA uchligi, konfidensiallik, kriptografiya, RBAC, TLS/VPN.</div>", goal: "Tarmoqlarda konfidensiallik va xavfsizlik mexanizmlarini o‘rganish.", deliverable: "Tarmoq xavfsizligi choralari matritsasi.", steps: ["CIA uchligi ahamiyatini yozing.", "TLS/VPN va RBAC mexanizmlarini tushuntiring.", "Ma’lumot sizib chiqishini oldini olish choralarini sanang."], matching: [{ left: "Konfidensiallik", right: "Ma’lumotlarni ruxsatsiz shaxslardan shifrlash va kirish nazorati bilan himoyalash" }, { left: "Yaxlitlik (Integrity)", right: "Ma’lumotlarning uzatish va saqlashda o‘zgartirilmaganligini kafolatlash" }, { left: "RBAC", right: "Lavozim va rolga qarab resurslarga kirish huquqini berish" }], ordering: ["Himoyalanadigan axborot resurslarini tasniflash", "Tarmoq kanallarini shifrlash (TLS/VPN) va firewall sozlash", "Ko‘p faktorli autentifikatsiya (MFA) va RBAC joriy etish", "Doimiy audit va zaxira nusxalashni yo‘lga qo‘yish"] },
+        { id: "egov_10", num: 10, title: "Butun jahon elektron hukumat rivojlanish tendensiyalari", summary: "BMT EGDI indeksi, ilg‘or davlatlar tajribasi (Estoniya, Janubiy Koreya, Singapur)", theoryHtml: "<p>Jahon miqyosida elektron hukumat BMT ning <strong>EGDI</strong> reytingi (OSI, TII, HCI) orqali baholanadi; Estoniya (X-Road), Janubiy Koreya va Singapur ilg‘or tajribaga ega.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> BMT EGDI, OSI, TII, HCI, X-Road, Mobile-first.</div>", goal: "BMT EGDI mezonlari va xorijiy tajribani tahlil qilish.", deliverable: "EGDI tahlili va tavsiyalar.", steps: ["OSI, TII, HCI komponentlarini izohlang.", "Ilg‘or davlatlar tajribasini solishtiring.", "2 ta amaliy tavsiya yozing."], matching: [{ left: "EGDI indeksi", right: "BMT tomonidan davlatlar elektron hukumat rivojlanishini baholash reytingi" }, { left: "Estoniya (X-Road)", right: "Bazalarni markazlashmagan holda xavfsiz bog‘lovchi integratsiya tizimi" }, { left: "Mobile-first", right: "Xizmatlarni birinchi navbatda smartfonlar uchun qulay loyihalash" }], ordering: ["BMT EGDI metodologiyasini o‘rganish", "OSI, TII va HCI ko‘rsatkichlarini tahlil qilish", "Ilg‘or davlatlar muvaffaqiyat omillarini solishtirish", "Milliy tizimni rivojlantirish uchun tavsiyalar ishlab chiqish"] },
+        { id: "egov_11", num: 11, title: "Davlat boshqaruvida raqamli transformatsiyasi", summary: "Raqamlashtirish va raqamli transformatsiya farqi, Data-driven boshqaruv va Dashboard", theoryHtml: "<p><strong>Raqamli transformatsiya</strong> boshqaruv jarayonlari va qaror qabul qilishni <strong>Data-driven</strong> yondashuv va tahliliy <strong>Dashboard</strong> lar asosida qayta quradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> raqamli transformatsiya, Data-driven boshqaruv, Dashboard.</div>", goal: "Raqamli transformatsiya va Data-driven boshqaruv tamoyillarini tahlil qilish.", deliverable: "Taqqoslama jadval va boshqaruv modeli.", steps: ["Raqamlashtirish va transformatsiya farqini yozing.", "Dashboard afzalliklarini tushuntiring.", "Raqamli savodxonlikni oshirish takliflarini bering."], matching: [{ left: "Raqamli transformatsiya", right: "Boshqaruv jarayonlarini raqamli texnologiyalar asosida tubdan yangilash" }, { left: "Data-driven boshqaruv", right: "Qarorlarni real statistik ma’lumotlar asosida qabul qilish" }, { left: "Tahliliy Dashboard", right: "Asosiy ko‘rsatkichlarni real vaqtda vizual aks ettirish paneli" }], ordering: ["Mavjud boshqaruv jarayonlari va muammolarni baholash", "Ma’lumotlarni yagona tahliliy omborlarga birlashtirish", "Xizmatlarni fuqaro ehtiyojiga moslab avtomatlashtirish", "Dashboard ko‘rsatkichlari asosida boshqaruvni takomillashtirish"] },
+        { id: "egov_12", num: 12, title: "My.gov.uz portali xizmatlaridan foydalanish va tahlil qilish", summary: "Yagona interaktiv davlat xizmatlari portali (YaIDXP) tuzilmasi, shaxsiy kabinet va UX tahlili", theoryHtml: "<p><strong>My.gov.uz (YaIDXP)</strong> OneID orqali kirish, sohalar katalogi, shaxsiy kabinet va davlat bojlaridan onlayn chegirmalar taqdim etadi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> My.gov.uz, YaIDXP, OneID, shaxsiy kabinet, UX.</div>", goal: "My.gov.uz funksional tuzilmasi va xizmatlarini UX mezonlari bo‘yicha tahlil qilish.", deliverable: "3 ta xizmatning qiyosiy tahlili.", steps: ["Portal va shaxsiy kabinet imkoniyatlarini tavsiflang.", "3 ta xizmatni bosqichlari bo‘yicha tahlil qiling.", "UX ni yaxshilash bo‘yicha 2 ta taklif yozing."], matching: [{ left: "My.gov.uz (YaIDXP)", right: "Barcha interaktiv davlat xizmatlarini birlashtiruvchi yagona portal" }, { left: "Shaxsiy kabinet", right: "Yuborilgan arizalar va tayyor hujjatlar saqlanadigan bo‘lim" }, { left: "Portal chegirmasi", right: "Onlayn murojaat qilinganda davlat bojidan beriladigan imtiyoz" }], ordering: ["My.gov.uz portaliga kirib OneID orqali avtorizatsiya qilish", "Katalog yoki qidiruv orqali kerakli xizmatni topish", "Xizmat pasporti, muddati va to‘lov shartlarini tekshirish", "UX qulayligini baholab tahliliy xulosa yozish"] },
+        { id: "egov_13", num: 13, title: "Elektron hujjat aylanish tizimlari bilan ishlash", summary: "Elektron hujjat, elektron raqamli imzo (ERI), hujjat marshrutizatsiyasi va ijro nazorati", theoryHtml: "<p><strong>Elektron hujjat aylanish tizimi (EHAT)</strong> hujjatlarni yaratish, kelishish, <strong>ERI</strong> bilan imzolash va ijro nazoratini avtomatlashtiradi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> EHAT, elektron hujjat, ERI, ijro nazorati, elektron arxiv.</div>", goal: "Elektron hujjat hayotiy sikli va ERI bilan tasdiqlash tartibini o‘rganish.", deliverable: "Elektron hujjat harakati sxemasi.", steps: ["Hujjatning tizimdagi harakat bosqichlarini yozing.", "ERI kalitining vazifasini tushuntiring.", "Ijro intizomiga ta’sirini asoslang."], matching: [{ left: "ERI", right: "Elektron hujjatga yuridik kuch beruvchi kriptografik tasdiq vositasi" }, { left: "Ijro nazorati", right: "Belgilangan muddat va mas’ul ijrochi bajarilishini kuzatish" }, { left: "Elektron arxiv", right: "Ijrosi yakunlangan hujjatlarni uzoq muddatli xavfsiz saqlash" }], ordering: ["Elektron hujjat loyihasini shablon asosida yaratish", "Mas’ul mutaxassislar bilan kelishish (vizalash)", "Rahbar tomonidan ERI bilan tasdiqlash", "Ro‘yxatga olib ijrochiga yuborish va muddatni nazorat qilish"] },
+        { id: "egov_14", num: 14, title: "Davlat axborot resurslari va ochiq ma’lumotlar portallarini tahlil qilish", summary: "Ochiq ma’lumotlar (Open Data), mashina o‘qiydigan formatlar (CSV, JSON, XML) va data.egov.uz", theoryHtml: "<p><strong>Ochiq ma’lumotlar (Open Data)</strong> <code>CSV</code>, <code>JSON</code>, <code>XML</code> kabi mashina o‘qiydigan formatlarda e’lon qilinadi (masalan, <code>data.egov.uz</code>).</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> Open Data, data.egov.uz, CSV, JSON, XML.</div>", goal: "Ochiq ma’lumotlar portali va mashina o‘qiydigan formatlarni tahlil qilish.", deliverable: "3 ta dataset tahlili va ilova g‘oyasi.", steps: ["data.egov.uz dan 3 ta dataset tahlil qiling.", "CSV, JSON va XML formatlarini solishtiring.", "Ochiq ma’lumotlar asosida ilova g‘oyasini yozing."], matching: [{ left: "JSON / XML formatlari", right: "API va ilovalar o‘rtasida tuzilmali ma’lumot almashish formatlari" }, { left: "CSV formati", right: "Jadval ko‘rinishidagi ochiq ma’lumotlarni saqlash formati" }, { left: "Open Data portali", right: "Davlat organlarining ochiq ma’lumotlar to‘plamlarini jamlovchi platforma" }], ordering: ["Ochiq ma’lumotlar portaliga kirib kataloglarni ko‘rish", "Dataset va uning yangilanish davriyligini tekshirish", "Ma’lumotni CSV yoki JSON formatida yuklab olish", "Ma’lumotlarni tahlil qilib amaliy xulosa tuzish"] },
+        { id: "egov_15", num: 15, title: "Elektron hukumat tizimida axborot xavfsizligi risklarini baholash", summary: "Tahdid va zaifliklar tahlili, risk matritsasi (Ehtimollik × Zarar) va Mitigation choralari", theoryHtml: "<p><strong>Risk darajasi = Ehtimollik × Zarar</strong> formulasi asosida tahdid va zaifliklar baholanib, himoya choralari (<strong>Mitigation</strong>) belgilanadi.</p><div class='theory-terms'><strong>Tayanch tushunchalar:</strong> axborot riski, Threat, Vulnerability, risk matritsasi, Mitigation.</div>", goal: "Axborot xavfsizligi risklarini aniqlash, baholash va kamaytirish rejasini tuzish.", deliverable: "5 ta risk bo‘yicha baholash matritsasi.", steps: ["Muhim axborot aktivlarini sanang.", "5 ta tahdid uchun risk darajasini hisoblang.", "Riskni kamaytirish choralarini yozing."], matching: [{ left: "Zaiflik (Vulnerability)", right: "Tizim yoki konfiguratsiyadagi himoyalanmagan nuqta yoki xatolik" }, { left: "Risk matritsasi", right: "Ehtimollik va zarar ko‘lamini ko‘paytirish orqali xavf darajasini aniqlash" }, { left: "Risk Mitigation", right: "Texnik va tashkiliy himoya choralari orqali xavfni pasaytirish" }], ordering: ["Muhim axborot aktivlari va bazalarni aniqlash", "Asosiy tahdidlar va zaifliklar ro‘yxatini tuzish", "Ehtimollik va zarar ballari asosida risk darajasini hisoblash", "Yuqori risklar uchun himoya choralari (Mitigation) rejasini tasdiqlash"] }
+      ]
+    };
+
+    const SUBJECTS = {
+      im: {
+        key: "im",
+        title: "Internet marketing",
+        heroTitle: "Internet marketing — Amaliy mashg‘ulotlar (7-semestr)",
+        desc: "KI-2301 va KI-2302 guruhlari uchun 15 ta amaliy mashg‘ulot: nazariy asoslar, amaliy vazifalar, interaktiv mashqlar va 10 tadan test savoli.",
+        topics: RAW_TOPICS.im.map(t => ({ ...t, theory: t.theoryHtml, quiz: buildTenQuestions(t, "im") }))
+      },
+      win: {
+        key: "win",
+        title: "Windows operatsion tizimida administrlash",
+        heroTitle: "Windows operatsion tizimida administrlash — Amaliy mashg‘ulotlar (7-semestr)",
+        desc: "KI-2301 va KI-2302 guruhlari uchun 15 ta amaliy mashg‘ulot: nazariy asoslar, buyruqlar, interaktiv mashqlar va 10 tadan test savoli.",
+        topics: RAW_TOPICS.win.map(t => ({ ...t, theory: t.theoryHtml, quiz: buildTenQuestions(t, "win") }))
+      },
+      egov: {
+        key: "egov",
+        title: "Elektron hukumat",
+        heroTitle: "Elektron hukumat — Amaliy mashg‘ulotlar (5-semestr)",
+        desc: "KI-2401 va KI(ax)-2401 guruhlari uchun 15 ta amaliy mashg‘ulot: nazariy asoslar, amaliy vazifalar, interaktiv mashqlar va 10 tadan test savoli.",
+        topics: RAW_TOPICS.egov.map(t => ({ ...t, theory: t.theoryHtml, quiz: buildTenQuestions(t, "egov") }))
+      }
+    };
+
+    const STORAGE_KEY = "ranch_practical_portal_live_v11";
+
+    function createInitialStudentsMap() {
+      const map = {};
+      INITIAL_STUDENTS.forEach(st => {
+        map[st.login] = {
+          role: "student",
+          num: st.num,
+          fullName: st.fullName,
+          group: st.group,
+          password: st.password,
+          loginTimes: [],
+          results: {},
+          notes: {}
+        };
+      });
+      return map;
+    }
+
+    function safeLoadState() {
+      const fallback = {
+        currentLogin: "",
+        currentRole: "",
+        sheetWebhookUrl: DEFAULT_SHEET_URL,
+        groupFilter: "ALL",
+        users: createInitialStudentsMap(),
+        guests: {}
+      };
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return fallback;
+        const parsed = JSON.parse(raw);
+        if (!parsed || typeof parsed !== "object") return fallback;
+        if (!parsed.sheetWebhookUrl || parsed.sheetWebhookUrl.indexOf("script.google.com") === -1) {
+          parsed.sheetWebhookUrl = DEFAULT_SHEET_URL;
+        }
+        if (!parsed.users || typeof parsed.users !== "object" || Object.keys(parsed.users).length === 0) {
+          parsed.users = createInitialStudentsMap();
+        } else {
+          INITIAL_STUDENTS.forEach(st => {
+            if (!parsed.users[st.login]) {
+              parsed.users[st.login] = {
+                role: "student",
+                num: st.num,
+                fullName: st.fullName,
+                group: st.group,
+                password: st.password,
+                loginTimes: [],
+                results: {},
+                notes: {}
+              };
+            }
+          });
+        }
+        if (!parsed.guests || typeof parsed.guests !== "object") {
+          parsed.guests = {};
+        }
+        return { ...fallback, ...parsed };
+      } catch (e) {
+        return fallback;
+      }
+    }
+
+    let state = safeLoadState();
+    let currentSubjectKey = "im";
+    let activeFilter = "all";
+    let searchQuery = "";
+    let currentTopicObj = null;
+    let currentOrderList = [];
+    let currentMatchDone = false;
+    let currentOrderDone = false;
+
+    function nowUz() { return new Date().toLocaleString("uz-UZ"); }
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+    }
+
+    function getAllTopics() {
+      return [...SUBJECTS.im.topics, ...SUBJECTS.win.topics, ...SUBJECTS.egov.topics];
+    }
+
+    function getTopicsForKeys(keys) {
+      let arr = [];
+      keys.forEach(k => {
+        if (SUBJECTS[k]) arr = arr.concat(SUBJECTS[k].topics);
+      });
+      return arr;
+    }
+
+    function getSubjectByTopicId(topicId) {
+      if (topicId.startsWith("win_")) return SUBJECTS.win;
+      if (topicId.startsWith("egov_")) return SUBJECTS.egov;
+      return SUBJECTS.im;
+    }
+
+    function isAdminSession() {
+      return state.currentRole === "admin" && state.currentLogin === ADMIN_CREDENTIALS.login;
+    }
+
+    function getActiveLearner() {
+      if (!state.currentLogin) return null;
+      if (state.currentRole === "student") return state.users[state.currentLogin] || null;
+      if (state.currentRole === "guest") return state.guests[state.currentLogin] || null;
+      return null;
+    }
+
+    function updateSubjectVisibility() {
+      const learner = getActiveLearner();
+      let allowed = ["im", "win", "egov"];
+
+      if (learner && state.currentRole === "student") {
+        allowed = getAllowedSubjectKeysForGroup(learner.group);
+      } else if (state.groupFilter === "KI-2301" || state.groupFilter === "KI-2302") {
+        allowed = ["im", "win"];
+      } else if (state.groupFilter === "KI-2401" || state.groupFilter === "KI(ax)-2401") {
+        allowed = ["egov"];
+      }
+
+      document.getElementById("tabSubjectIm").style.display = allowed.includes("im") ? "inline-block" : "none";
+      document.getElementById("tabSubjectWin").style.display = allowed.includes("win") ? "inline-block" : "none";
+      document.getElementById("tabSubjectEgov").style.display = allowed.includes("egov") ? "inline-block" : "none";
+
+      if (!allowed.includes(currentSubjectKey)) {
+        currentSubjectKey = allowed[0];
+      }
+
+      document.querySelectorAll(".subject-tab").forEach(t => {
+        t.classList.toggle("active", t.dataset.subject === currentSubjectKey);
+      });
+
+      applySubjectTheme(currentSubjectKey);
+    }
+
+    function syncAuthUI() {
+      const activeUrl = (state.sheetWebhookUrl || DEFAULT_SHEET_URL).trim();
+      document.getElementById("groupFilterSelect").value = state.groupFilter || "ALL";
+      document.getElementById("sheetWebhookInput").value = activeUrl;
+      document.getElementById("sheetSaveStatus").textContent = activeUrl ? "Google Sheets avtomatik ulangan." : "URL kiritilmagan.";
+
+      updateSubjectVisibility();
+
+      const authStatusText = document.getElementById("authStatusText");
+      const authTimeText = document.getElementById("authTimeText");
+
+      if (isAdminSession()) {
+        authStatusText.textContent = "Faol sessiya: Admin: " + ADMIN_CREDENTIALS.fullName + " — 'Admin statistika' tugmasi orqali barcha ma’lumotlarni ko‘ring.";
+        authTimeText.textContent = "Mehmonlar soni: " + Object.keys(state.guests || {}).length;
+        return;
+      }
+
+      const learner = getActiveLearner();
+      if (learner && state.currentRole === "student") {
+        const lastLogin = learner.loginTimes && learner.loginTimes.length ? learner.loginTimes[learner.loginTimes.length - 1] : nowUz();
+        authStatusText.textContent = "Talaba kirdi: " + learner.fullName + " • Guruh: " + learner.group;
+        authTimeText.textContent = "Kirish vaqti: " + lastLogin;
+      } else if (learner && state.currentRole === "guest") {
+        const lastLogin = learner.loginTimes && learner.loginTimes.length ? learner.loginTimes[learner.loginTimes.length - 1] : nowUz();
+        authStatusText.textContent = "Mehmon kirdi: " + learner.fullName + " • Tashkilot: " + (learner.org || "—");
+        authTimeText.textContent = "Kirish vaqti: " + lastLogin;
+      } else {
+        authStatusText.textContent = "Holat: Tizimga kirilmagan (mehmon sifatida ro‘yxatdan o‘tish yoki login/parol bilan kirish mumkin).";
+        authTimeText.textContent = "";
+      }
+    }
+
+    function updateProgress() {
+      const progressScopeLabel = document.getElementById("progressScopeLabel");
+      const progressText = document.getElementById("progressText");
+      const progressFill = document.getElementById("progressFill");
+
+      if (isAdminSession()) {
+        const allStudents = Object.values(state.users);
+        let doneSlots = 0;
+        let maxSlots = 0;
+        allStudents.forEach(st => {
+          const allowedTopics = getTopicsForKeys(getAllowedSubjectKeysForGroup(st.group));
+          maxSlots += allowedTopics.length;
+          allowedTopics.forEach(t => {
+            if (st.results && st.results[t.id] && st.results[t.id].passed) doneSlots++;
+          });
+        });
+        const pct = maxSlots ? Math.round((doneSlots / maxSlots) * 100) : 0;
+        progressScopeLabel.textContent = "Admin (76 talaba)";
+        progressText.textContent = pct + "%";
+        progressFill.style.width = pct + "%";
+        return;
+      }
+
+      const learner = getActiveLearner();
+      if (!learner) {
+        const viewTopics = (state.groupFilter === "KI-2401" || state.groupFilter === "KI(ax)-2401")
+          ? SUBJECTS.egov.topics
+          : getTopicsForKeys(["im", "win"]);
+        progressScopeLabel.textContent = "O‘zlashtirish";
+        progressText.textContent = "0 / " + viewTopics.length + " (0%)";
+        progressFill.style.width = "0%";
+        return;
+      }
+
+      const allowedKeys = state.currentRole === "student"
+        ? getAllowedSubjectKeysForGroup(learner.group)
+        : ["im", "win", "egov"];
+      const relevantTopics = getTopicsForKeys(allowedKeys);
+      const completedCount = relevantTopics.filter(t => learner.results && learner.results[t.id] && learner.results[t.id].passed).length;
+      const percent = relevantTopics.length ? Math.round((completedCount / relevantTopics.length) * 100) : 0;
+      progressScopeLabel.textContent = state.currentRole === "guest" ? "Mehmon (" + learner.fullName + ")" : learner.group;
+      progressText.textContent = completedCount + " / " + relevantTopics.length + " (" + percent + "%)";
+      progressFill.style.width = percent + "%";
+    }
+
+    function renderSubjectHeader() {
+      const subj = SUBJECTS[currentSubjectKey];
+      document.getElementById("heroTitle").textContent = subj.heroTitle;
+      document.getElementById("heroDesc").textContent = subj.desc;
+      document.getElementById("filterAllBtn").textContent = "Barcha mavzular (" + subj.topics.length + ")";
+      applySubjectTheme(currentSubjectKey);
+    }
+
+    function renderTopics() {
+      const subj = SUBJECTS[currentSubjectKey];
+      const learner = getActiveLearner();
+      const resMap = (learner && learner.results) || {};
+      const topicsGrid = document.getElementById("topicsGrid");
+
+      const filtered = subj.topics.filter(topic => {
+        const res = resMap[topic.id];
+        const isPassed = Boolean(res && res.passed);
+        if (activeFilter === "completed" && !isPassed) return false;
+        if (activeFilter === "pending" && isPassed) return false;
+        if (searchQuery.trim() !== "") {
+          const q = searchQuery.toLowerCase();
+          const match = topic.title.toLowerCase().includes(q) ||
+                        topic.summary.toLowerCase().includes(q) ||
+                        topic.theory.toLowerCase().includes(q) ||
+                        String(topic.num) === q.trim();
+          if (!match) return false;
+        }
+        return true;
+      });
+
+      if (filtered.length === 0) {
+        topicsGrid.innerHTML = "<p style='color:var(--muted);'>Mos mavzu topilmadi.</p>";
+        return;
+      }
+
+      topicsGrid.innerHTML = filtered.map(topic => {
+        const res = resMap[topic.id];
+        const isPassed = Boolean(res && res.passed);
+        return `
+          <article class="topic-card">
+            <div>
+              <div class="card-top">
+                <span class="num-badge">${topic.num}-amaliyot • 2 soat</span>
+                <span class="status-badge ${isPassed ? "status-done" : "status-pending"}">
+                  ${isPassed ? "Mustahkamlangan" : "Bajarilmagan"}
+                </span>
+              </div>
+              <h3>${topic.title}</h3>
+              <p>${topic.summary}</p>
+            </div>
+            <div class="card-footer">
+              <span class="score-tag">
+                ${res ? "Test: " + res.score + "/" + res.total : "Nazariya + Mashq + 10 test"}
+              </span>
+              <button type="button" class="btn btn-primary" onclick="openTopic('${topic.id}')">
+                ${res ? "Qayta ko‘rish" : "Boshlash"}
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderMatchingExercise(topic) {
+      const rights = topic.matching.map(m => m.right);
+      const rotated = rights.length > 1 ? [...rights.slice(1), rights[0]] : rights;
+
+      document.getElementById("matchingContainer").innerHTML = topic.matching.map((pair, idx) => `
+        <div class="match-row" id="match_row_${idx}">
+          <div><strong>${idx + 1}. ${pair.left}</strong></div>
+          <div>
+            <select id="match_sel_${idx}">
+              <option value="">-- Mos ta’rifni tanlang --</option>
+              ${rotated.map(opt => `<option value="${opt.replace(/"/g, "&quot;")}">${opt}</option>`).join("")}
+            </select>
+          </div>
+        </div>
+      `).join("");
+      document.getElementById("matchFeedback").textContent = "";
+    }
+
+    function renderOrderingExercise(topic) {
+      const steps = [...topic.ordering];
+      if (steps.length === 4) {
+        currentOrderList = [steps[2], steps[0], steps[3], steps[1]];
+      } else {
+        currentOrderList = steps.reverse();
+      }
+      drawOrderItems();
+      document.getElementById("orderFeedback").textContent = "";
+    }
+
+    function drawOrderItems() {
+      document.getElementById("orderingContainer").innerHTML = currentOrderList.map((stepText, idx) => `
+        <div class="order-item" id="order_item_${idx}">
+          <span><strong>${idx + 1}-qadam:</strong> ${stepText}</span>
+          <div class="order-btns">
+            <button type="button" class="btn btn-outline btn-sm" onclick="moveOrderStep(${idx}, -1)" ${idx === 0 ? "disabled" : ""}>↑</button>
+            <button type="button" class="btn btn-outline btn-sm" onclick="moveOrderStep(${idx}, 1)" ${idx === currentOrderList.length - 1 ? "disabled" : ""}>↓</button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    window.moveOrderStep = function(idx, dir) {
+      const target = idx + dir;
+      if (target < 0 || target >= currentOrderList.length) return;
+      const temp = currentOrderList[idx];
+      currentOrderList[idx] = currentOrderList[target];
+      currentOrderList[target] = temp;
+      drawOrderItems();
+    };
+
+    function updateAnswerToolbar(topic) {
+      let answered = 0;
+      const btns = topic.quiz.map((_, qIdx) => {
+        const sel = document.querySelector(`input[name="q_${topic.id}_${qIdx}"]:checked`);
+        const isAns = Boolean(sel);
+        if (isAns) answered++;
+        return `<button type="button" class="q-jump-btn ${isAns ? "answered" : ""}" onclick="jumpToQuestion(${qIdx})">${qIdx + 1}</button>`;
+      });
+      document.getElementById("answeredCounter").textContent = "Javob berildi: " + answered + " / " + topic.quiz.length;
+      document.getElementById("qJumpList").innerHTML = btns.join("");
+    }
+
+    window.jumpToQuestion = function(qIdx) {
+      const el = document.getElementById("q_card_" + qIdx);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    };
+
+    function renderQuizQuestions(topic, savedAnswers = null, showFeedback = false) {
+      document.getElementById("modalQuiz").innerHTML = topic.quiz.map((item, qIdx) => {
+        const chosen = savedAnswers ? savedAnswers[qIdx] : undefined;
+        return `
+          <div class="question-block" id="q_card_${qIdx}">
+            <div class="question-title">${qIdx + 1}-savol (10 tadan). ${item.q}</div>
+            ${item.options.map((optText, oIdx) => {
+              let extraClass = "";
+              if (showFeedback) {
+                if (oIdx === item.correct) extraClass = "correct-opt";
+                else if (chosen === oIdx && oIdx !== item.correct) extraClass = "wrong-opt";
+              }
+              const checked = chosen === oIdx ? "checked" : "";
+              return `
+                <label class="opt ${extraClass}">
+                  <input type="radio" name="q_${topic.id}_${qIdx}" value="${oIdx}" ${checked} onchange="updateAnswerToolbar(currentTopicObj)" />
+                  <span>${optText}</span>
+                </label>
+              `;
+            }).join("")}
+            <div class="explanation ${showFeedback ? "show" : ""}">
+              <strong>Izoh:</strong> ${item.explain}
+            </div>
+          </div>
+        `;
+      }).join("");
+      updateAnswerToolbar(topic);
+    }
+
+    window.openTopic = function(topicId) {
+      const topic = getAllTopics().find(t => t.id === topicId);
+      if (!topic) return;
+      currentTopicObj = topic;
+
+      const learner = getActiveLearner();
+      const prevRes = learner && learner.results ? learner.results[topic.id] : null;
+      currentMatchDone = Boolean(prevRes && prevRes.matchDone);
+      currentOrderDone = Boolean(prevRes && prevRes.orderDone);
+
+      document.getElementById("modalBadge").textContent = topic.num + "-amaliy mashg‘ulot • 2 soat • Nazariya + Amaliy mashq + 10 test";
+      document.getElementById("modalTitle").textContent = topic.title;
+      document.getElementById("modalTheory").innerHTML = topic.theory;
+      document.getElementById("labGoal").textContent = topic.goal;
+      document.getElementById("labDeliverable").textContent = topic.deliverable;
+      document.getElementById("modalPracticeSteps").innerHTML = topic.steps.map(s => `<li>${s}</li>`).join("");
+
+      renderMatchingExercise(topic);
+      renderOrderingExercise(topic);
+
+      document.getElementById("labNoteInput").value = (learner && learner.notes && learner.notes[topic.id]) || (prevRes && prevRes.labNote) || "";
+      renderQuizQuestions(topic, prevRes ? prevRes.answers : null, Boolean(prevRes));
+
+      const banner = document.getElementById("quizResultBanner");
+      banner.className = "result-banner";
+      banner.textContent = "";
+
+      if (prevRes) {
+        banner.classList.add("show", prevRes.passed ? "result-pass" : "result-fail");
+        banner.textContent = "Natija: " + prevRes.score + " / " + prevRes.total + " (" + Math.round((prevRes.score/prevRes.total)*100) + "%) • Bajarilgan vaqt: " + (prevRes.completedAt || "—");
+      }
+
+      document.getElementById("topicModal").classList.add("open");
+    };
+
+    function closeTopicModal() {
+      const learner = getActiveLearner();
+      if (currentTopicObj && learner) {
+        if (!learner.notes) learner.notes = {};
+        learner.notes[currentTopicObj.id] = document.getElementById("labNoteInput").value.trim();
+        saveState();
+      }
+      document.getElementById("topicModal").classList.remove("open");
+      currentTopicObj = null;
+    }
+
+    async function postPayloadToSheets(payload) {
+      const url = (state.sheetWebhookUrl || DEFAULT_SHEET_URL).trim();
+      if (!url) return { ok: false, reason: "no_url" };
+      try {
+        await fetch(url, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
+        return { ok: true };
+      } catch (err) {
+        return { ok: false, reason: "network" };
+      }
+    }
+
+    function buildTopicPayload(topic) {
+      const learner = getActiveLearner();
+      const subj = getSubjectByTopicId(topic.id);
+      const res = (learner && learner.results && learner.results[topic.id]) || { score: 0, total: topic.quiz.length, completedAt: nowUz() };
+      const note = document.getElementById("labNoteInput").value.trim() || (learner && learner.notes && learner.notes[topic.id]) || "";
+      const percent = Math.round((res.score / res.total) * 100);
+      const grpLabel = state.currentRole === "guest"
+        ? "MEHMON (" + (learner && learner.org ? learner.org : "Tashqi") + ")"
+        : (learner && learner.group) || "";
+      return {
+        login: state.currentLogin || "",
+        studentName: (learner && learner.fullName) || state.currentLogin || "Kiritilmagan",
+        studentGroup: grpLabel,
+        subjectTitle: subj.title,
+        topicNum: topic.num,
+        topicTitle: topic.title,
+        score: res.score,
+        total: res.total,
+        percent,
+        completedAt: res.completedAt || nowUz(),
+        labNote: note
+      };
+    }
+
+    function handleLogin() {
+      const loginInput = document.getElementById("loginInput");
+      const passwordInput = document.getElementById("passwordInput");
+      const loginVal = loginInput.value.trim().toLowerCase();
+      const passVal = passwordInput.value.trim();
+
+      if (!loginVal || !passVal) {
+        alert("Login va parolni kiriting!");
+        return;
+      }
+
+      if (loginVal === ADMIN_CREDENTIALS.login) {
+        if (passVal !== ADMIN_CREDENTIALS.password) {
+          alert("Parol noto‘g‘ri!");
+          return;
+        }
+        state.currentLogin = ADMIN_CREDENTIALS.login;
+        state.currentRole = "admin";
+        state.groupFilter = "ALL";
+        passwordInput.value = "";
+        saveState();
+        syncAuthUI();
+        renderSubjectHeader();
+        updateProgress();
+        renderTopics();
+        return;
+      }
+
+      if (state.users[loginVal]) {
+        const st = state.users[loginVal];
+        if (st.password !== passVal) {
+          alert("Parol noto‘g‘ri!");
+          return;
+        }
+        if (!Array.isArray(st.loginTimes)) st.loginTimes = [];
+        st.loginTimes.push(nowUz());
+        state.currentLogin = loginVal;
+        state.currentRole = "student";
+        state.groupFilter = st.group;
+        passwordInput.value = "";
+        saveState();
+        syncAuthUI();
+        renderSubjectHeader();
+        updateProgress();
+        renderTopics();
+        return;
+      }
+
+      if (state.guests[loginVal]) {
+        const gs = state.guests[loginVal];
+        if (gs.password !== passVal) {
+          alert("Parol noto‘g‘ri!");
+          return;
+        }
+        if (!Array.isArray(gs.loginTimes)) gs.loginTimes = [];
+        gs.loginTimes.push(nowUz());
+        state.currentLogin = loginVal;
+        state.currentRole = "guest";
+        state.groupFilter = "MEHMON";
+        passwordInput.value = "";
+        saveState();
+        syncAuthUI();
+        renderSubjectHeader();
+        updateProgress();
+        renderTopics();
+        return;
+      }
+
+      alert("Bunday login topilmadi. Mehmon bo‘lsangiz o‘ng tomondagi 'Mehmon sifatida ro‘yxatdan o‘tish' formasini to‘ldiring.");
+    }
+
+    function buildReportRows(topicsArr) {
+      const learner = getActiveLearner();
+      const resMap = (learner && learner.results) || {};
+      const notesMap = (learner && learner.notes) || {};
+      return topicsArr.map(t => {
+        const res = resMap[t.id];
+        const note = (res && res.labNote) || notesMap[t.id] || "—";
+        const statusText = res && res.passed ? "Yakunlangan" : (res ? "7/10 dan past" : "Bajarilmagan");
+        const exStatus = res ? (res.matchDone ? "Moslash:+" : "Moslash:-") + " / " + (res.orderDone ? "Tartib:+" : "Tartib:-") : "—";
+        const scoreText = res ? res.score + " / " + res.total : "—";
+        const doneTime = (res && res.completedAt) || "—";
+        return `<tr><td>${t.num}</td><td>${t.title}</td><td>${statusText}</td><td>${exStatus}</td><td>${scoreText}</td><td>${doneTime}</td><td>${note}</td></tr>`;
+      }).join("");
+    }
+
+    function openReport() {
+      const learner = getActiveLearner();
+      if (!learner) {
+        alert("Hisobotni ko‘rish uchun avval talaba yoki mehmon login/paroli bilan kiring.");
+        return;
+      }
+      const roleLabel = state.currentRole === "guest" ? "Mehmon (" + (learner.org || "") + ")" : "Guruh: " + learner.group;
+      document.getElementById("reportStudentInfo").textContent =
+        "Foydalanuvchi: " + learner.fullName + " | Login: " + state.currentLogin + " | " + roleLabel;
+
+      const allowedKeys = state.currentRole === "student"
+        ? getAllowedSubjectKeysForGroup(learner.group)
+        : ["im", "win", "egov"];
+
+      document.getElementById("reportImSection").style.display = allowedKeys.includes("im") ? "block" : "none";
+      document.getElementById("reportWinSection").style.display = allowedKeys.includes("win") ? "block" : "none";
+      document.getElementById("reportEgovSection").style.display = allowedKeys.includes("egov") ? "block" : "none";
+
+      const relevantTopics = getTopicsForKeys(allowedKeys);
+      const passedAll = relevantTopics.filter(t => learner.results && learner.results[t.id] && learner.results[t.id].passed).length;
+
+      document.getElementById("reportOverallSummary").textContent =
+        "O‘zlashtirilgan: " + passedAll + " / " + relevantTopics.length + " amaliyot";
+
+      if (allowedKeys.includes("im")) document.getElementById("reportImBody").innerHTML = buildReportRows(SUBJECTS.im.topics);
+      if (allowedKeys.includes("win")) document.getElementById("reportWinBody").innerHTML = buildReportRows(SUBJECTS.win.topics);
+      if (allowedKeys.includes("egov")) document.getElementById("reportEgovBody").innerHTML = buildReportRows(SUBJECTS.egov.topics);
+
+      document.getElementById("reportModal").classList.add("open");
+    }
+
+    function renderAdminPanel() {
+      const grpFilter = document.getElementById("adminGroupSelect").value;
+      const q = (document.getElementById("adminSearchInput").value || "").trim().toLowerCase();
+
+      const allStudents = Object.values(state.users);
+      const allGuests = Object.entries(state.guests || {}).map(([loginKey, g]) => ({ login: loginKey, ...g }));
+      const allTopics = getAllTopics();
+
+      const filteredStudents = allStudents.filter(st => {
+        if (grpFilter !== "ALL" && st.group !== grpFilter) return false;
+        if (q && !st.fullName.toLowerCase().includes(q) && !st.login.toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      const filteredGuests = allGuests.filter(gs => {
+        if (q && !gs.fullName.toLowerCase().includes(q) && !gs.login.toLowerCase().includes(q) && !(gs.org || "").toLowerCase().includes(q)) return false;
+        return true;
+      });
+
+      const loggedInStudentsCount = allStudents.filter(st => Array.isArray(st.loginTimes) && st.loginTimes.length > 0).length;
+      let totalSubmissions = 0;
+      [...allStudents, ...allGuests].forEach(person => {
+        totalSubmissions += Object.keys(person.results || {}).length;
+      });
+
+      document.getElementById("adminStatsGrid").innerHTML = `
+        <div class="stat-box"><strong>${allStudents.length}</strong><span>Jami talabalar</span></div>
+        <div class="stat-box"><strong>${allGuests.length}</strong><span>Ro‘yxatdan o‘tgan mehmonlar</span></div>
+        <div class="stat-box"><strong>${loggedInStudentsCount}</strong><span>Kirgan talabalar</span></div>
+        <div class="stat-box"><strong>${totalSubmissions}</strong><span>Jami ishlangan testlar</span></div>
+      `;
+
+      document.getElementById("adminStudentsBody").innerHTML = filteredStudents.map((st, idx) => {
+        const lastLogin = (st.loginTimes && st.loginTimes.length) ? st.loginTimes[st.loginTimes.length - 1] : "Hali kirmagan";
+        const allowedTopics = getTopicsForKeys(getAllowedSubjectKeysForGroup(st.group));
+        const passedCount = allowedTopics.filter(t => st.results && st.results[t.id] && st.results[t.id].passed).length;
+        return `
+          <tr>
+            <td>${idx + 1}</td>
+            <td>${st.group}</td>
+            <td>${st.fullName}</td>
+            <td><code>${st.login}</code></td>
+            <td><code>${st.password}</code></td>
+            <td>${lastLogin}</td>
+            <td><strong>${passedCount} / ${allowedTopics.length}</strong></td>
+          </tr>
+        `;
+      }).join("");
+
+      document.getElementById("adminGuestsBody").innerHTML = filteredGuests.length
+        ? filteredGuests.map((gs, idx) => {
+            const lastLogin = (gs.loginTimes && gs.loginTimes.length) ? gs.loginTimes[gs.loginTimes.length - 1] : "—";
+            const doneCount = allTopics.filter(t => gs.results && gs.results[t.id]).length;
+            return `
+              <tr>
+                <td>${idx + 1}</td>
+                <td>${gs.fullName}</td>
+                <td>${gs.org || "—"}</td>
+                <td><code>${gs.login}</code></td>
+                <td>${gs.registeredAt || "—"}</td>
+                <td>${lastLogin}</td>
+                <td><strong>${doneCount} / ${allTopics.length}</strong></td>
+              </tr>
+            `;
+          }).join("")
+        : "<tr><td colspan='7' style='color:var(--muted);'>Hozircha mehmonlar ro‘yxatdan o‘tmagan.</td></tr>";
+
+      const subRows = [];
+      filteredStudents.forEach(st => {
+        allTopics.forEach(t => {
+          const res = st.results && st.results[t.id];
+          const note = (st.notes && st.notes[t.id]) || (res && res.labNote) || "";
+          if (res || note) {
+            const subj = getSubjectByTopicId(t.id);
+            const exStatus = res ? (res.matchDone ? "Moslash:+" : "Moslash:-") + " / " + (res.orderDone ? "Tartib:+" : "Tartib:-") : "—";
+            subRows.push(`
+              <tr>
+                <td>${st.group}</td>
+                <td>${st.fullName}</td>
+                <td>${subj.title}</td>
+                <td>${t.num}-mavzu: ${t.title}</td>
+                <td>${exStatus}</td>
+                <td>${res ? "<strong>" + res.score + "/" + res.total + "</strong>" : "—"}</td>
+                <td>${(res && res.completedAt) || "—"}</td>
+                <td>${note || "—"}</td>
+              </tr>
+            `);
+          }
+        });
+      });
+
+      filteredGuests.forEach(gs => {
+        allTopics.forEach(t => {
+          const res = gs.results && gs.results[t.id];
+          const note = (gs.notes && gs.notes[t.id]) || (res && res.labNote) || "";
+          if (res || note) {
+            const subj = getSubjectByTopicId(t.id);
+            const exStatus = res ? (res.matchDone ? "Moslash:+" : "Moslash:-") + " / " + (res.orderDone ? "Tartib:+" : "Tartib:-") : "—";
+            subRows.push(`
+              <tr>
+                <td><strong>MEHMON</strong></td>
+                <td>${gs.fullName}</td>
+                <td>${subj.title}</td>
+                <td>${t.num}-mavzu: ${t.title}</td>
+                <td>${exStatus}</td>
+                <td>${res ? "<strong>" + res.score + "/" + res.total + "</strong>" : "—"}</td>
+                <td>${(res && res.completedAt) || "—"}</td>
+                <td>${note || "—"}</td>
+              </tr>
+            `);
+          }
+        });
+      });
+
+      document.getElementById("adminSubmissionsBody").innerHTML = subRows.length
+        ? subRows.join("")
+        : "<tr><td colspan='8' style='color:var(--muted);'>Hozircha bajarilgan test yoki amaliy izoh qayd etilmagan.</td></tr>";
+    }
+
+    function initApp() {
+      document.getElementById("checkMatchBtn").addEventListener("click", () => {
+        if (!currentTopicObj) return;
+        let correctCount = 0;
+        currentTopicObj.matching.forEach((pair, idx) => {
+          const row = document.getElementById("match_row_" + idx);
+          const sel = document.getElementById("match_sel_" + idx);
+          row.classList.remove("ok", "bad");
+          if (sel && sel.value === pair.right) {
+            row.classList.add("ok");
+            correctCount++;
+          } else {
+            row.classList.add("bad");
+          }
+        });
+        const total = currentTopicObj.matching.length;
+        currentMatchDone = correctCount === total;
+        const fb = document.getElementById("matchFeedback");
+        fb.style.color = currentMatchDone ? "var(--success)" : "var(--danger)";
+        fb.textContent = currentMatchDone
+          ? "A’lo! Barcha " + total + "/" + total + " moslashtirish to‘g‘ri bajarildi."
+          : "Natija: " + correctCount + "/" + total + " to‘g‘ri. Qizil qatorlarni qayta tanlang.";
+      });
+
+      document.getElementById("checkOrderBtn").addEventListener("click", () => {
+        if (!currentTopicObj) return;
+        let correctCount = 0;
+        currentTopicObj.ordering.forEach((expectedStep, idx) => {
+          const itemEl = document.getElementById("order_item_" + idx);
+          itemEl.classList.remove("ok", "bad");
+          if (currentOrderList[idx] === expectedStep) {
+            itemEl.classList.add("ok");
+            correctCount++;
+          } else {
+            itemEl.classList.add("bad");
+          }
+        });
+        const total = currentTopicObj.ordering.length;
+        currentOrderDone = correctCount === total;
+        const fb = document.getElementById("orderFeedback");
+        fb.style.color = currentOrderDone ? "var(--success)" : "var(--danger)";
+        fb.textContent = currentOrderDone
+          ? "To‘g‘ri! Amaliyot bosqichlari ketma-ketligi mukammal tartiblandi (" + total + "/" + total + ")."
+          : "Natija: " + correctCount + "/" + total + " qadam o‘z o‘rnida. ↑ / ↓ tugmalari bilan tartiblang.";
+      });
+
+      document.getElementById("loginBtn").addEventListener("click", handleLogin);
+      document.getElementById("passwordInput").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") handleLogin();
+      });
+
+      document.getElementById("registerGuestBtn").addEventListener("click", () => {
+        const gName = document.getElementById("guestNameInput").value.trim();
+        const gOrg = document.getElementById("guestOrgInput").value.trim();
+        const gLogin = document.getElementById("guestLoginInput").value.trim().toLowerCase().replace(/\s+/g, "_");
+        const gPass = document.getElementById("guestPassInput").value.trim();
+
+        if (!gName || !gLogin || !gPass) {
+          alert("Mehmon Ism-sharifi, login va parolini kiriting!");
+          return;
+        }
+        if (gLogin === ADMIN_CREDENTIALS.login || state.users[gLogin]) {
+          alert("Bu login band. Boshqa mehmon logini kiriting.");
+          return;
+        }
+        const timeNow = nowUz();
+        if (state.guests[gLogin]) {
+          if (state.guests[gLogin].password !== gPass) {
+            alert("Ushbu mehmon login uchun parol noto‘g‘ri!");
+            return;
+          }
+          state.guests[gLogin].fullName = gName;
+          if (gOrg) state.guests[gLogin].org = gOrg;
+          if (!Array.isArray(state.guests[gLogin].loginTimes)) state.guests[gLogin].loginTimes = [];
+          state.guests[gLogin].loginTimes.push(timeNow);
+        } else {
+          state.guests[gLogin] = {
+            role: "guest",
+            fullName: gName,
+            org: gOrg || "Mehmon foydalanuvchi",
+            password: gPass,
+            registeredAt: timeNow,
+            loginTimes: [timeNow],
+            results: {},
+            notes: {}
+          };
+        }
+
+        state.currentLogin = gLogin;
+        state.currentRole = "guest";
+        state.groupFilter = "MEHMON";
+        document.getElementById("guestPassInput").value = "";
+        saveState();
+        syncAuthUI();
+        renderSubjectHeader();
+        updateProgress();
+        renderTopics();
+        alert("Mehmon sifatida ro‘yxatdan o‘tdingiz! Login: " + gLogin);
+      });
+
+      document.getElementById("logoutBtn").addEventListener("click", () => {
+        state.currentLogin = "";
+        state.currentRole = "";
+        state.groupFilter = "ALL";
+        document.getElementById("loginInput").value = "";
+        document.getElementById("passwordInput").value = "";
+        saveState();
+        syncAuthUI();
+        renderSubjectHeader();
+        updateProgress();
+        renderTopics();
+      });
+
+      document.getElementById("checkQuizBtn").addEventListener("click", async () => {
+        if (!currentTopicObj) return;
+        const learner = getActiveLearner();
+        const banner = document.getElementById("quizResultBanner");
+        if (!learner) {
+          banner.className = "result-banner show result-warn";
+          banner.textContent = "Testni saqlash uchun avval talaba yoki mehmon sifatida tizimga kiring.";
+          return;
+        }
+
+        const total = currentTopicObj.quiz.length;
+        const answers = [];
+
+        for (let i = 0; i < total; i++) {
+          const selected = document.querySelector(`input[name="q_${currentTopicObj.id}_${i}"]:checked`);
+          if (!selected) {
+            banner.className = "result-banner show result-fail";
+            banner.textContent = "Iltimos, barcha " + total + " ta test savoliga javob bering.";
+            jumpToQuestion(i);
+            return;
+          }
+          answers.push(Number(selected.value));
+        }
+
+        let score = 0;
+        currentTopicObj.quiz.forEach((item, idx) => {
+          if (answers[idx] === item.correct) score++;
+        });
+
+        const passed = score >= 7;
+        const noteText = document.getElementById("labNoteInput").value.trim();
+        const timeStamp = nowUz();
+
+        if (!learner.notes) learner.notes = {};
+        if (!learner.results) learner.results = {};
+
+        learner.notes[currentTopicObj.id] = noteText;
+        learner.results[currentTopicObj.id] = {
+          score,
+          total,
+          passed,
+          answers,
+          matchDone: currentMatchDone,
+          orderDone: currentOrderDone,
+          labNote: noteText,
+          completedAt: timeStamp
+        };
+
+        saveState();
+        updateProgress();
+        renderTopics();
+        renderQuizQuestions(currentTopicObj, answers, true);
+
+        let msg = passed
+          ? "Natija: " + total + " tadan " + score + " ta to‘g‘ri (" + (score * 10) + "%). Bajarilgan vaqt: " + timeStamp + "."
+          : "Natija: " + total + " tadan " + score + " ta to‘g‘ri (" + (score * 10) + "%). Kamida 7/10 tavsiya etiladi. Vaqt: " + timeStamp + ".";
+
+        const sent = await postPayloadToSheets(buildTopicPayload(currentTopicObj));
+        msg += sent.ok ? " Google Sheets’ga yuborildi." : " Google Sheets aloqasini tekshiring.";
+
+        banner.className = "result-banner show " + (passed ? "result-pass" : "result-fail");
+        banner.textContent = msg;
+      });
+
+      document.getElementById("sendSingleToSheetBtn").addEventListener("click", async () => {
+        if (!currentTopicObj) return;
+        const learner = getActiveLearner();
+        const banner = document.getElementById("quizResultBanner");
+        if (learner) {
+          const noteText = document.getElementById("labNoteInput").value.trim();
+          if (!learner.notes) learner.notes = {};
+          learner.notes[currentTopicObj.id] = noteText;
+          if (learner.results && learner.results[currentTopicObj.id]) learner.results[currentTopicObj.id].labNote = noteText;
+          saveState();
+        }
+        const sent = await postPayloadToSheets(buildTopicPayload(currentTopicObj));
+        banner.className = "result-banner show " + (sent.ok ? "result-pass" : "result-fail");
+        banner.textContent = sent.ok ? "Natija Google Sheets’ga yuborildi!" : "Yuborishda xatolik yuz berdi.";
+      });
+
+      document.getElementById("resetQuizBtn").addEventListener("click", () => {
+        if (!currentTopicObj) return;
+        renderQuizQuestions(currentTopicObj, null, false);
+        const banner = document.getElementById("quizResultBanner");
+        banner.className = "result-banner";
+        banner.textContent = "";
+      });
+
+      document.getElementById("groupFilterSelect").addEventListener("change", (e) => {
+        const learner = getActiveLearner();
+        if (learner && state.currentRole === "student") {
+          e.target.value = learner.group;
+          return;
+        }
+        state.groupFilter = e.target.value;
+        saveState();
+        updateSubjectVisibility();
+        renderSubjectHeader();
+        updateProgress();
+        renderTopics();
+      });
+
+      document.querySelectorAll(".subject-tab").forEach(tab => {
+        tab.addEventListener("click", () => {
+          document.querySelectorAll(".subject-tab").forEach(t => t.classList.remove("active"));
+          tab.classList.add("active");
+          currentSubjectKey = tab.dataset.subject;
+          searchQuery = "";
+          document.getElementById("searchInput").value = "";
+          renderSubjectHeader();
+          renderTopics();
+        });
+      });
+
+      document.querySelectorAll(".tab-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+          btn.classList.add("active");
+          activeFilter = btn.dataset.filter;
+          renderTopics();
+        });
+      });
+
+      document.getElementById("searchInput").addEventListener("input", (e) => {
+        searchQuery = e.target.value;
+        renderTopics();
+      });
+
+      document.getElementById("openAdminPanelBtn").addEventListener("click", () => {
+        if (!isAdminSession()) {
+          alert("Admin statistikani ochish uchun avval Admin login va paroli bilan tizimga kiring.");
+          document.getElementById("loginInput").focus();
+          return;
+        }
+        renderAdminPanel();
+        document.getElementById("adminModal").classList.add("open");
+      });
+
+      document.getElementById("adminGroupSelect").addEventListener("change", renderAdminPanel);
+      document.getElementById("adminSearchInput").addEventListener("input", renderAdminPanel);
+      document.getElementById("closeAdminModal").addEventListener("click", () => document.getElementById("adminModal").classList.remove("open"));
+      document.getElementById("closeAdminBtn2").addEventListener("click", () => document.getElementById("adminModal").classList.remove("open"));
+
+      document.getElementById("exportAdminCsvBtn").addEventListener("click", () => {
+        const allTopics = getAllTopics();
+        const rows = [["Rol", "Guruh / Tashkilot", "F.I.Sh", "Login", "Oxirgi kirish", "Fan", "Mavzu №", "Mavzu", "Ball", "Bajarilgan vaqt", "Amaliy izoh"]];
+
+        Object.values(state.users).forEach(st => {
+          const lastLogin = (st.loginTimes && st.loginTimes.length) ? st.loginTimes[st.loginTimes.length - 1] : "";
+          allTopics.forEach(t => {
+            const res = st.results && st.results[t.id];
+            const note = (st.notes && st.notes[t.id]) || (res && res.labNote) || "";
+            if (res || note) {
+              const subj = getSubjectByTopicId(t.id);
+              rows.push(["Talaba", st.group, st.fullName, st.login, lastLogin, subj.title, t.num, t.title, res ? res.score + "/" + res.total : "", (res && res.completedAt) || "", note]);
+            }
+          });
+        });
+
+        Object.entries(state.guests || {}).forEach(([loginKey, gs]) => {
+          const lastLogin = (gs.loginTimes && gs.loginTimes.length) ? gs.loginTimes[gs.loginTimes.length - 1] : "";
+          allTopics.forEach(t => {
+            const res = gs.results && gs.results[t.id];
+            const note = (gs.notes && gs.notes[t.id]) || (res && res.labNote) || "";
+            if (res || note) {
+              const subj = getSubjectByTopicId(t.id);
+              rows.push(["Mehmon", gs.org || "Mehmon", gs.fullName, loginKey, lastLogin, subj.title, t.num, t.title, res ? res.score + "/" + res.total : "", (res && res.completedAt) || "", note]);
+            }
+          });
+        });
+
+        const csvContent = rows.map(r => r.map(v => `"${String(v || "").replace(/"/g, '""')}"`).join(",")).join("\n");
+        const blob = new Blob(["\uFEFF" + csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "barcha_guruhlar_va_mehmonlar_statistika.csv";
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      document.getElementById("syncAllToSheetBtn").addEventListener("click", async () => {
+        const learner = getActiveLearner();
+        if (!learner) return;
+        const worked = getAllTopics().filter(t => (learner.results && learner.results[t.id]) || (learner.notes && learner.notes[t.id]));
+        if (worked.length === 0) {
+          alert("Yuborish uchun natija topilmadi.");
+          return;
+        }
+        for (const t of worked) {
+          await postPayloadToSheets(buildTopicPayload(t));
+        }
+        alert(worked.length + " ta mashg‘ulot natijasi Google Sheets’ga yuborildi!");
+      });
+
+      document.getElementById("openReportBtn").addEventListener("click", openReport);
+      document.getElementById("closeReportModal").addEventListener("click", () => document.getElementById("reportModal").classList.remove("open"));
+      document.getElementById("closeReportBtn2").addEventListener("click", () => document.getElementById("reportModal").classList.remove("open"));
+
+      document.getElementById("clearProgressBtn").addEventListener("click", () => {
+        const learner = getActiveLearner();
+        if (!learner) return;
+        learner.results = {};
+        learner.notes = {};
+        saveState();
+        updateProgress();
+        renderTopics();
+        openReport();
+      });
+
+      document.getElementById("openSheetConfigBtn").addEventListener("click", () => {
+        document.getElementById("sheetWebhookInput").value = state.sheetWebhookUrl || DEFAULT_SHEET_URL;
+        document.getElementById("sheetModal").classList.add("open");
+      });
+
+      document.getElementById("saveSheetUrlBtn").addEventListener("click", () => {
+        const val = document.getElementById("sheetWebhookInput").value.trim();
+        state.sheetWebhookUrl = val || DEFAULT_SHEET_URL;
+        saveState();
+        syncAuthUI();
+      });
+
+      document.getElementById("closeSheetModal").addEventListener("click", () => document.getElementById("sheetModal").classList.remove("open"));
+      document.getElementById("closeSheetBtn2").addEventListener("click", () => document.getElementById("sheetModal").classList.remove("open"));
+
+      document.getElementById("closeTopicModal").addEventListener("click", closeTopicModal);
+      document.getElementById("cancelTopicBtn").addEventListener("click", closeTopicModal);
+
+      document.getElementById("topicModal").addEventListener("click", (e) => { if (e.target.id === "topicModal") closeTopicModal(); });
+      document.getElementById("reportModal").addEventListener("click", (e) => { if (e.target.id === "reportModal") e.target.classList.remove("open"); });
+      document.getElementById("adminModal").addEventListener("click", (e) => { if (e.target.id === "adminModal") e.target.classList.remove("open"); });
+      document.getElementById("sheetModal").addEventListener("click", (e) => { if (e.target.id === "sheetModal") e.target.classList.remove("open"); });
+
+      syncAuthUI();
+      renderSubjectHeader();
+      updateProgress();
+      renderTopics();
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initApp);
+    } else {
+      initApp();
+    }
+  </script>
+</body>
+</html>
